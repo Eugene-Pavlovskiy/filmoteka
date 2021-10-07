@@ -4,6 +4,8 @@ import makeCard from './palets/card.hbs';
 const refs = {
   search: document.querySelector('.search-input'),
   galleryTrending: document.querySelector('.gallery-trending__list'),
+  clearBtn: document.querySelector('.js-first-btn'),
+  paginationMenu: document.querySelector('.pagination'),
 };
 
 const genres = [
@@ -32,31 +34,50 @@ refs.search.addEventListener('input', e => console.log(e.target.value));
 
 let pageCounter = 1;
 
+let totalPages = 0;
+
 const KEY = '94f703750c3e0771d8c2babc592efc94';
 
 // функция которая возвращает массив объектов фильмов, аргументом передаеться номер страницы для пагинации (колекция популярных фильмов)
 
-async function fetchMovies(pageNum) {
+async function fetchTrendingMovies(pageNum) {
   const firstRespons = await fetch(
     `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=${pageNum}`,
   );
 
   const parsedRespons = await firstRespons.json();
 
+  totalPages = parsedRespons.total_pages;
+
   // с сервера приходит объект запроса, массив с фильмами в свойстве result
   return parsedRespons.results;
 }
 
-// обрабатывает полученный массив приводя каждый объект фильма в новый формат(правильная ссылка на постер, жанры словами(в оригинальном массиве только id) и т.д.)
-async function getFormatedMovies() {
-  const movies = await fetchMovies(1);
+// обрабатывает полученный массив фильмов убирая ненужные свойства и преобразуя id жанров в слова
+async function getMovies(callBack, page) {
+  const movies = await callBack(page);
 
-  const g = movies.map(getGenres);
-  // const posters = movies.map()
+  const genresArr = movies.map(getGenres);
 
-  // console.log('g: ', g);
-  return g;
+  const formatedMovies = [];
+
+  for (let i = 0; i < movies.length; i++) {
+    const { id, title, release_date, poster_path, vote_average } = movies[i];
+    formatedMovies.push({ id, title, release_date, poster_path, vote_average });
+    formatedMovies[i].genres = genresArr[i];
+
+    if (formatedMovies[i].genres.length > 3) {
+      formatedMovies[i].genres = formatedMovies[i].genres.slice(0, 3);
+      formatedMovies[i].genres.push('Other');
+    }
+
+    formatedMovies[i].genres = formatedMovies[i].genres.join(', ');
+  }
+
+  return formatedMovies;
 }
+
+getMovies(fetchTrendingMovies, 1);
 
 // функция для превращенния жанров (изначально в объекте фильма в свойстве жанры хранятся id) в читабельный вариант
 function getGenres({ genre_ids: gen }) {
@@ -75,7 +96,7 @@ function getGenres({ genre_ids: gen }) {
   return gens;
 }
 
-getFormatedMovies();
+// getFormatedMovies();
 
 // возможные размеры для постера
 
@@ -96,32 +117,11 @@ async function getPoster(size, { poster_path }) {
   return poster;
 }
 
-// fetchMovies(1).then(r => console.log(r[0]));
-
-// async function a(num) {
-//   const arr = await fetchMovies(num);
-//   // console.log(arr[0].poster_path);
-//   const poster = await fetch(`https://image.tmdb.org/t/p/w342${arr[0].poster_path}`);
-//   // console.log(poster);
-// }
-
-// a(1);
-
 async function makeMarkUp() {
-  const movies = await fetchMovies(1);
-  const genres = movies.map(getGenres);
-
-  for (let i = 0; i < movies.length; i++) {
-    movies[i].genre_ids = genres[i].join(', ');
-    movies[i].release_date = movies[i].release_date.slice(0, 4);
-
-    console.log(genres[i].join(' '));
-  }
+  const movies = await getMovies(fetchTrendingMovies, 1);
 
   const markUp = movies.map(makeCard).join('');
 
-  console.log(movies[0]);
-  // console.log('markup: ', markUp);
   return markUp;
 }
 
@@ -131,4 +131,14 @@ async function appendMarkUp() {
   refs.galleryTrending.insertAdjacentHTML('beforeend', await makeMarkUp());
 }
 
+function clearPage() {
+  refs.galleryTrending.innerHTML = '';
+}
+
+refs.paginationMenu.addEventListener('click', clearPage);
+
 appendMarkUp();
+
+// fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=2`)
+//   .then(e => e.json())
+//   .then(e => console.log(e.results));
