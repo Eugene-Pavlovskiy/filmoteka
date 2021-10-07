@@ -1,0 +1,34 @@
+<svg width="0" height="0" class="hidden">
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="arrow-right">
+    <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" stroke="#000" d="M6.667 16h18.667M16 25.333 25.333 16 16 6.667"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="close">
+    <path fill="none" stroke-width="2.133" stroke="#000" d="m8.533 8.533 14.933 14.933M8.533 23.467 23.466 8.534"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="heart">
+    <path fill="#ff6b08" d="m16 30.583-2.24-2.24C5.44 20.983 0 16.023 0 9.943c0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.08 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.08-5.44 11.04-13.76 18.4L16 30.583z"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="logo">
+    <path fill="none" stroke="#818181" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M26.427 2.667H5.574a2.907 2.907 0 0 0-2.907 2.907v20.853a2.907 2.907 0 0 0 2.907 2.907h20.853a2.907 2.907 0 0 0 2.907-2.907V5.574a2.907 2.907 0 0 0-2.907-2.907zM9.333 2.667v26.667M22.667 2.667v26.667M2.667 16h26.667M2.667 9.333h6.667M2.667 22.667h6.667M22.667 22.667h6.667M22.667 9.333h6.667"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="search">
+    <path fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28.001l-5.8-5.8"></path>
+  </symbol>
+  <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="arrow-left">
+    <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" stroke="#000" d="M25.333 16H6.666M16 25.333 6.667 16 16 6.667"></path>
+  </symbol>
+</svg>
+
+<!-- <svg class="icon">
+  <use xlink:href="#arrow-right"></use>
+</svg><svg class="icon">
+  <use xlink:href="#close"></use>
+</svg><svg class="icon">
+  <use xlink:href="#heart"></use>
+</svg><svg class="icon">
+  <use xlink:href="#logo"></use>
+</svg><svg class="icon">
+  <use xlink:href="#search"></use>
+</svg><svg class="icon">
+  <use xlink:href="#arrow-left"></use>
+</svg> -->
