@@ -4,5 +4,9 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
+@import './utils/mainutils';
+@import './base/base';
+
 @import './example';
+@import './layout/header';
 @import './pagination';
