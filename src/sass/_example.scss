@@ -38,7 +38,7 @@ header {
 }
 
 main {
-  text-align: center;
+  height: 2000px;
   padding-top: 60px;
 }
 
@@ -110,5 +110,18 @@ span {
   &__info {
     font-weight: 500;
     color: #ff6b08;
+  }
+
+  animation: append 500ms linear;
+}
+
+// animation: append 5s linear;
+@keyframes append {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
