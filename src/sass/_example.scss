@@ -112,7 +112,13 @@ span {
     color: #ff6b08;
   }
 
-  animation: append 500ms linear;
+  // animation: append 2s linear 3s;
+
+  // animation-delay: 500ms;
+  animation-duration: 1000ms;
+  animation-name: append;
+
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
 // animation: append 5s linear;
