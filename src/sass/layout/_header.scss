@@ -7,7 +7,13 @@
   height: 230px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/header/dsktp-home.png');
+}
+
+.library-open {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../images/header/dsktp-lib.png');
 }
 
 .container-header {

@@ -18,7 +18,7 @@ function navToHome() {
   home.classList.add('nav-link-current');
   searchForm.classList.remove('is-hidden');
   btnsLibrary.classList.add('is-hidden');
-  //   overlay.classList.remove('library-open');
+  overlay.classList.remove('library-open');
 }
 
 function navToLibrary(e) {
@@ -27,8 +27,8 @@ function navToLibrary(e) {
   home.classList.remove('nav-link-current');
   searchForm.classList.add('is-hidden');
   btnsLibrary.classList.remove('is-hidden');
+  overlay.classList.add('library-open');
   showWatched();
-  //   overlay.classList.add('library-open');
 }
 
 // переключение кнопок Просмотр/Очередь
