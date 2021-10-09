@@ -18,66 +18,30 @@
     />
   </head>
   <body>
-    <header class="header"><input type="text" class="search-input" />put</header>
+    <header class="header">
+      <form class="search" for="">
+        <input type="text" name="search" class="search-input" /><button
+          class="input-btn"
+          type="submit"
+        >
+          asdf
+        </button>
+      </form>
+    </header>
 
     <main>
       <div class="container">
         <div class="gallery-trending">
-          <ul class="gallery-trending__list">
-            <!-- <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <img
-                src="https://image.tmdb.org/t/p/w342/xmbU4JTUm8rsdtn7Y3Fcm30GpeT.jpg"
-                alt=""
-                class="card-thumb__img"
-              />
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li>
-            <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li>
-            <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li>
-            <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li>
-            <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li>
-            <li class="card-thumb">
-              <div class="card-thumb__img"></div>
-              <span class="card-thumb__title">Title of film</span>
-              <span class="card-thumb__info">genre, genre | 2020</span>
-            </li> -->
-          </ul>
+          <ul class="gallery-trending__list"></ul>
           <div class="pagination">
-            <button class="pagination__arrow js-arrow">
+            <button class="pagination__arrow js-arrow-left">
               <svg class="pagination__arrow-logo" width="16px" height="16px">
                 <use href="./images/sprite.svg#arrow-left"></use>
               </svg>
             </button>
             <div class="pagination__container"></div>
-            <!-- <button class="pagination__number js-first-btn">1</button>
-            <button class="pagination__number">2</button>
-            <button class="pagination__number">3</button>
-            <button class="pagination__number">4</button>
-            <button class="pagination__number">5</button>
-            <button class="pagination__number">6</button>
-            <button class="pagination__number">7</button>
-            <button class="pagination__number">8</button>
-            <button class="pagination__number">9</button>
-            <button class="pagination__number">10</button> -->
-            <button class="pagination__arrow">
+
+            <button class="pagination__arrow js-arrow-right">
               <svg class="pagination__arrow-logo" width="16px" height="16px">
                 <use href="./images/sprite.svg#arrow-right"></use>
               </svg>
