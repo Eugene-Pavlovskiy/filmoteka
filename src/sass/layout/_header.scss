@@ -17,6 +17,7 @@
 .main-nav {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .logo-header {
@@ -33,6 +34,12 @@
   }
 }
 
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  margin: 0;
+}
+
 .nav-link {
   display: block;
   text-transform: uppercase;
@@ -44,6 +51,10 @@
   &-current {
     position: relative;
   }
+}
+
+.navigation {
+  display: flex;
 }
 
 .nav-link-current::after {
@@ -58,7 +69,9 @@
 }
 
 .nav-list {
+  margin: 0;
   display: inline-flex;
+  align-items: flex-end;
 }
 
 .nav-item:not(:nth-child(1)) {
@@ -75,18 +88,36 @@
   display: none;
 }
 
-.search-input {
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: transparent;
+.form-search-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 4px;
 
   color: $white-color;
   border-bottom: 0.5px solid $white-color;
+
+  width: 280px;
+  height: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+}
+
+.search-input {
+  border: none;
+  background-color: transparent;
+  width: 90%;
 }
 
 .search-input::placeholder {
   color: $white-color;
+  font-size: 14px;
+}
+
+.icon-search svg {
+  display: block;
 }
 
 .btns-library.is-hidden {
