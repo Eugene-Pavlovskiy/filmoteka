@@ -54,6 +54,7 @@ function updateGallery(e, callBack) {
   }
 
   let pageCounter = JSON.parse(sessionStorage.getItem('pageCounter'));
+  let totalPages = JSON.parse(sessionStorage.getItem('totalPages'));
   console.log(pageCounter);
 
   if (e.target.classList.contains('js-arrow-left') && pageCounter > 1) {

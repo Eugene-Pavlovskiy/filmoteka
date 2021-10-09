@@ -33,6 +33,8 @@ let forListenerRemoval = null;
 async function onFormSubmit(e) {
   e.preventDefault();
 
+  sessionStorage.setItem('pageCounter', 1);
+
   const query = e.currentTarget.search.value;
 
   const f = await fetchMovies(query);
