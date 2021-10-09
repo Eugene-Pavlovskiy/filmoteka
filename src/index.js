@@ -3,6 +3,7 @@ import getRefs from './js/components/refs';
 import { getAllGenres, fetchTrendingMovies, fetchMovies } from './js/components/api';
 import { appendMarkUp } from './js/components/mark-up';
 import { updateGallery } from './js/components/updateGallery';
+import './js/components/nav';
 
 // изначальные настройки при открытии страницы
 

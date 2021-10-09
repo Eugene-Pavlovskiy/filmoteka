@@ -26,7 +26,8 @@
     padding: 13px 38px;
   }
 
-  &:focus {
+  &:focus,
+  &.btn-active {
     background-color: $btn-accent-color;
     border-color: $btn-accent-color;
   }
