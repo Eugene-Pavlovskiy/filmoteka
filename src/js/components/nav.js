@@ -19,6 +19,7 @@ function navToHome() {
   searchForm.classList.remove('is-hidden');
   btnsLibrary.classList.add('is-hidden');
   overlay.classList.remove('library-open');
+  // сюда подключить отрисовку популярных фильмов
 }
 
 function navToLibrary(e) {
@@ -41,9 +42,11 @@ btnQueue.addEventListener('click', showQueue);
 function showWatched() {
   btnWatched.classList.add('btn-active');
   btnQueue.classList.remove('btn-active');
+  // сюда подключить список просмотренных
 }
 
 function showQueue() {
   btnQueue.classList.add('btn-active');
   btnWatched.classList.remove('btn-active');
+  // сюда подключить очередь просмотра
 }
