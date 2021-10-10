@@ -1,8 +1,6 @@
 import getRefs from './refs';
 const refs = getRefs();
 
-console.log(getRefs);
-
 refs.logo.addEventListener('click', navToHome);
 refs.home.addEventListener('click', navToHome);
 refs.library.addEventListener('click', navToLibrary);

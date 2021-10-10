@@ -1,0 +1,83 @@
+.gallery-trending {
+  &__list {
+    padding: 0px;
+  }
+
+  @media screen and (min-width: 768px) {
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    margin-top: 30px;
+    margin-left: -30px;
+  }
+}
+
+.card-thumb {
+  margin-top: 20px;
+  width: 280px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 294px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 274px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__img {
+    background-color: gray;
+
+    height: 400px;
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  &__title,
+  &__info {
+    display: inline-block;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 1.33;
+  }
+
+  &__title {
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  &__info {
+    font-weight: 500;
+    color: #ff6b08;
+  }
+
+  cursor: pointer;
+  // animation: append 2s linear 3s;
+
+  // animation-delay: 500ms;
+  animation-duration: 1000ms;
+  animation-name: append;
+
+  // animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+// animation: append 5s linear;
+@keyframes append {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
