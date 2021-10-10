@@ -22,7 +22,7 @@
     }
   }
 
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1024px) {
     max-width: 1600px;
 
     background-image: $gradient, url('../images/header/dsktp-home.png');
@@ -45,7 +45,7 @@
       }
     }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1024px) {
       max-width: 1600px;
 
       background-image: $gradient, url('../images/header/dsktp-lib.png');
