@@ -31,6 +31,8 @@ function navToLibrary(e) {
   showWatched();
 }
 
+console.log(overlay);
+
 // переключение кнопок Просмотр/Очередь
 
 btnWatched.addEventListener('click', showWatched);
