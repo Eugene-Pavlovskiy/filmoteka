@@ -7,13 +7,53 @@
   height: 230px;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/header/dsktp-home.png');
-}
+  background-size: cover;
+  background-image: $gradient, url('../images/header/mob-home.png');
 
-.library-open {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../images/header/dsktp-lib.png');
+  @media screen and (min-resolution: 2dppx) {
+    background-image: $gradient, url('../images/header/mob-home@2x.png');
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: $gradient, url('../images/header/tablet-home.png');
+
+    @media screen and (min-resolution: 2dppx) {
+      background-image: $gradient, url('../images/header/tablet-home@2x.png');
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    max-width: 1600px;
+
+    background-image: $gradient, url('../images/header/dsktp-home.png');
+    @media screen and (min-resolution: 2dppx) {
+      background-image: $gradient, url('../images/header/dsktp-home@2x.png');
+    }
+  }
+  &.library-open {
+    background-image: $gradient, url('../images/header/mob-lib.png');
+
+    @media screen and (min-resolution: 2dppx) {
+      background-image: $gradient, url('../images/header/mob-lib@2x.png');
+    }
+
+    @media screen and (min-width: 768px) {
+      background-image: $gradient, url('../images/header/tablet-lib.png');
+
+      @media screen and (min-resolution: 2dppx) {
+        background-image: $gradient, url('../images/header/tablet-lib@2x.png');
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      max-width: 1600px;
+
+      background-image: $gradient, url('../images/header/dsktp-lib.png');
+      @media screen and (min-resolution: 2dppx) {
+        background-image: $gradient, url('../images/header/dsktp-lib@2x.png');
+      }
+    }
+  }
 }
 
 .container-header {
@@ -88,6 +128,7 @@
   display: flex;
   justify-content: center;
   margin-top: 37px;
+  color: $white-color;
 }
 
 .search-form.is-hidden,
@@ -114,6 +155,8 @@
 }
 
 .search-input {
+  color: $white-color;
+  outline: none;
   border: none;
   background-color: transparent;
   width: 90%;
