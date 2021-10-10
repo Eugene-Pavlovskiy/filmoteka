@@ -5,6 +5,9 @@ import { appendMarkUp } from './js/components/mark-up';
 import { updateGallery } from './js/components/updateGallery';
 import './js/components/nav';
 
+import { throttle } from 'lodash';
+import { debounce } from 'lodash';
+
 // изначальные настройки при открытии страницы
 
 // получение рефов
@@ -19,7 +22,7 @@ appendMarkUp(fetchTrendingMovies);
 // добавляет слушатель на меню пагинации для переключения между страницами популярных фильмов
 refs.paginationMenu.addEventListener('click', start);
 // добавляет слушатель на строку для поиска
-refs.form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('input', debounce(onFormInput, 300));
 
 // отдельная функция для слушателя выше что бы потом снять его
 function start(e) {
@@ -31,12 +34,23 @@ let forListenerRemoval = null;
 
 // логика отрисовки фильмов по запросу, не закончена
 // TODO: если не нашлись фильмы нужно выводить сообщение о ненахождении
-async function onFormSubmit(e) {
+async function onFormInput(e) {
   e.preventDefault();
+
+  if (refs.searchInput.value === '') {
+    return;
+  }
+
+  // console.log(e);
 
   sessionStorage.setItem('pageCounter', 1);
 
-  const query = e.currentTarget.search.value;
+  // console.log(e.currentTarget.query);
+
+  // const query = e.currentTarget.query.value;
+  const query = refs.searchInput.value;
+
+  console.log(refs.searchInput.value);
 
   const f = await fetchMovies(query);
 
@@ -53,7 +67,7 @@ async function onFormSubmit(e) {
 
   appendMarkUp(f);
 
-  refs.form.reset();
+  // refs.form.reset();
 }
 
 // просто для тестов

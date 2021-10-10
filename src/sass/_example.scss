@@ -118,6 +118,12 @@ span {
   animation-duration: 1000ms;
   animation-name: append;
 
+  cursor: pointer;
+
+  tra &:hover {
+    transform: scale(1.01);
+  }
+
   // animation: name duration timing-function delay iteration-count direction fill-mode;
 }
 
