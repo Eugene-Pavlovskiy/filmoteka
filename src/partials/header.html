@@ -4,8 +4,8 @@
       <nav class="main-nav">
         <div class="logo">
           <a href="./index.html" class="logo-link js-logo">
-            <svg class="logo-icon" width="24" height="24">
-              <use class="icon-film" href=""></use>
+            <svg class="logo-icon">
+              <use class="icon-film" href="./images/sprite.svg#logo"></use>
             </svg>
             <span class="logo-header">Filmoteka</span>
           </a>
@@ -35,13 +35,17 @@
               placeholder="Search films"
             />
             <svg class="icon-search" width="12" height="12">
-              <use href="#"></use>
+              <use href="./images/sprite.svg#search"></use>
             </svg>
           </label>
         </div>
       </form>
 
-      <div class="btns-library is-hidden" data-action="btn-library-shown">
+      <div class="error-text is-hidden">
+        Search result not successful. Enter the correct movie name!
+      </div>
+
+      <div class="btns-library is-hidden" data-action="btn-library-show">
         <ul class="button-list">
           <li class="button-list-item">
             <button type="button" class="button" data-action="btn-watched">Watched</button>
