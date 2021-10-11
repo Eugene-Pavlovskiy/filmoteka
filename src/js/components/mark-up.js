@@ -13,8 +13,6 @@ async function makeMarkUp(callBack) {
 
   const markUp = movies.map(makeCard).join('');
 
-  console.log('movies from makeMarkUp: ', movies);
-
   return markUp;
 }
 
