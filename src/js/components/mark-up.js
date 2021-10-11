@@ -7,9 +7,11 @@ const refs = getRefs();
 async function makeMarkUp(callBack) {
   const movies = await getMovies(callBack, JSON.parse(sessionStorage.getItem('pageCounter')));
 
-  const markUp = movies.map(makeCard).join('');
+  if (!movies) {
+    return;
+  }
 
-  console.log('movies from makeMarkUp: ', movies);
+  const markUp = movies.map(makeCard).join('');
 
   return markUp;
 }
@@ -31,6 +33,19 @@ function updatePaginationMenu(page, totalPages = 20) {
   let markUp = '';
 
   refs.paginationMenu.querySelector('.pagination__container').innerHTML = '';
+
+  if (totalPages < 10) {
+    for (let i = 1; i <= totalPages; i++) {
+      if (i === page) {
+        markUp += `<button class="pagination__number pagination__number--current" type="button">${page}</button>`;
+        continue;
+      }
+      markUp += `<button class="pagination__number" type="button">${i}</button>`;
+    }
+
+    refs.paginationMenu.querySelector('.pagination__container').innerHTML = markUp;
+    return;
+  }
 
   if (page < 5) {
     for (let i = 1; i <= 5; i++) {

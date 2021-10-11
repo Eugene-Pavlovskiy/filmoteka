@@ -1,17 +1,23 @@
 import getRefs from './refs';
 const refs = getRefs();
 
+import { onHomeClick } from '../../index';
+
+// import { debounce } from 'lodash';
+
 refs.logo.addEventListener('click', navToHome);
 refs.home.addEventListener('click', navToHome);
 refs.library.addEventListener('click', navToLibrary);
 
-function navToHome() {
+function navToHome(e) {
+  e.preventDefault();
   refs.library.classList.remove('nav-link-current');
   refs.home.classList.add('nav-link-current');
   refs.searchForm.classList.remove('is-hidden');
   refs.btnsLibrary.classList.add('is-hidden');
   refs.overlay.classList.remove('library-open');
   // сюда подключить отрисовку популярных фильмов
+  onHomeClick();
 }
 
 function navToLibrary(e) {

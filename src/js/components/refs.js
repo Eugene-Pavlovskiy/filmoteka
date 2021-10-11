@@ -1,10 +1,11 @@
 export default function getRefs() {
   return {
-    form: document.querySelector('.search'),
+    form: document.querySelector('.search-form'),
+    error: document.querySelector('.error'),
+    errorText: document.querySelector('.error-text'),
     searchInput: document.querySelector('.search-input'),
-    btn: document.querySelector('.input-btn'),
     galleryTrending: document.querySelector('.gallery-trending__list'),
-    clearBtn: document.querySelector('.js-first-btn'),
+    paginationContainer: document.querySelector('.pagination-container'),
     paginationMenu: document.querySelector('.pagination'),
 
     logo: document.querySelector('.js-logo'),

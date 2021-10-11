@@ -13,8 +13,6 @@ async function getAllGenres() {
 
   const genres = await respons.json();
 
-  // console.log(genres.genres);
-
   localStorage.setItem('genres', JSON.stringify(genres.genres));
 }
 

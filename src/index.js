@@ -5,6 +5,9 @@ import { appendMarkUp } from './js/components/mark-up';
 import { updateGallery } from './js/components/updateGallery';
 import './js/components/nav';
 
+import { throttle } from 'lodash';
+import { debounce } from 'lodash';
+
 // изначальные настройки при открытии страницы
 
 // получение рефов
@@ -16,14 +19,30 @@ getAllGenres();
 // изначальное добавление разметки популярных фильмов
 appendMarkUp(fetchTrendingMovies);
 
+const onFormInputDebounce = debounce(onFormInput, 400);
+
 // добавляет слушатель на меню пагинации для переключения между страницами популярных фильмов
-refs.paginationMenu.addEventListener('click', start);
+refs.paginationMenu.addEventListener('click', trendingPagination);
 // добавляет слушатель на строку для поиска
-refs.form.addEventListener('submit', onFormSubmit);
+refs.form.addEventListener('input', onFormInputDebounce);
 
 // отдельная функция для слушателя выше что бы потом снять его
-function start(e) {
+function trendingPagination(e) {
   updateGallery(e, fetchTrendingMovies);
+}
+
+function onHomeClick() {
+  refs.searchInput.value = '';
+  sessionStorage.setItem('pageCounter', 1);
+  appendMarkUp(fetchTrendingMovies);
+
+  refs.paginationMenu.removeEventListener('click', forListenerRemoval);
+  refs.paginationMenu.addEventListener('click', trendingPagination);
+
+  refs.form.removeEventListener('input', onFormInputDebounce);
+  refs.form.addEventListener('input', onFormInputDebounce);
+
+  refs.home.disbled = true;
 }
 
 // в теле функции генерируеться другая функция через колбеки которая меняеться при каждом новом запросе, нужна глобальная переменная что бы хранить предыдущее значение для снятия слушателя, пока что не придумал вариант получше
@@ -31,12 +50,21 @@ let forListenerRemoval = null;
 
 // логика отрисовки фильмов по запросу, не закончена
 // TODO: если не нашлись фильмы нужно выводить сообщение о ненахождении
-async function onFormSubmit(e) {
+async function onFormInput(e) {
   e.preventDefault();
+
+  if (refs.searchInput.value === '') {
+    sessionStorage.setItem('pageCounter', 1);
+    appendMarkUp(fetchTrendingMovies);
+    refs.paginationMenu.removeEventListener('click', forListenerRemoval);
+    refs.paginationMenu.addEventListener('click', trendingPagination);
+    return;
+  }
 
   sessionStorage.setItem('pageCounter', 1);
 
-  const query = e.currentTarget.search.value;
+  // const query = e.currentTarget.query.value;
+  const query = refs.searchInput.value;
 
   const f = await fetchMovies(query);
 
@@ -47,13 +75,11 @@ async function onFormSubmit(e) {
   refs.paginationMenu.removeEventListener('click', forListenerRemoval);
   forListenerRemoval = onSub;
 
-  refs.paginationMenu.removeEventListener('click', start);
+  refs.paginationMenu.removeEventListener('click', trendingPagination);
 
   refs.paginationMenu.addEventListener('click', onSub);
 
   appendMarkUp(f);
-
-  refs.form.reset();
 }
 
 // просто для тестов
@@ -61,3 +87,5 @@ async function onFormSubmit(e) {
 // fetch(`https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=cat&page=2`)
 //   .then(r => r.json())
 //   .then(r => console.log(r));
+
+export { onHomeClick };

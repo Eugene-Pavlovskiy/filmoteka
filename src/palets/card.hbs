@@ -1,12 +1,32 @@
 <li class="card-thumb">
+  {{!-- <img class="card-thumb__img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img> --}}
+
+  {{#if poster_path}}
   <img class="card-thumb__img" 
   srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
   src="https://image.tmdb.org/t/p/w780{{poster_path}}"
   alt="poster of {{title}}">
   </img>
+  {{else}}
+  <img class="card-thumb__img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
   <span class="card-thumb__title">{{title}}</span>
   <span class="card-thumb__info">{{genresMin}} | {{release_date}} {{score}}</span>
 </li>
+
+{{!-- {{#if poster_path}}
+    <img class="movie-card-img" src="https://image.tmdb.org/t/p/w300{{poster_path}}" alt="Film {{title}} poster" />
+    {{else}}
+    <img class="movie-card-img" src="https://raw.githubusercontent.com/marvall/filmoteka/main/src/images/no-poster.png"
+        alt="poster of {{original_title}}" />
+    {{/if}} --}}
 
 
 {{!-- <li class="card-thumb">

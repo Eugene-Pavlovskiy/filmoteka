@@ -1,5 +1,25 @@
+import getRefs from './refs';
+
+const refs = getRefs();
+
 async function getMovies(callBack, page) {
   const movies = await callBack(page);
+
+  if (movies === undefined || movies === null || movies.length < 1) {
+    refs.error.innerHTML = `<div class="error-text">
+        Search result not successful. Enter the correct movie name!
+      </div>`;
+    refs.paginationMenu.classList.add('visually-hidden');
+    return 0;
+  }
+
+  refs.error.innerHTML = '';
+
+  if (movies.length <= 20 && sessionStorage.getItem('totalPages') < 2) {
+    refs.paginationMenu.classList.add('visually-hidden');
+  } else if (refs.paginationMenu.classList.contains('visually-hidden')) {
+    refs.paginationMenu.classList.remove('visually-hidden');
+  }
 
   const genresArr = movies.map(getGenres);
 
