@@ -36,7 +36,7 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   markUp += `<button class="pagination__arrow js-arrow-left">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/sprite.5ec50489.svg#arrow-left"></use>
+            <use href="/sprite.ef4b9d06.svg#arrow-left"></use>
           </svg>
         </button>`;
 
@@ -199,7 +199,7 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   markUp += `<button class="pagination__arrow js-arrow-right">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/sprite.5ec50489.svg#arrow-right"></use>
+            <use href="/sprite.ef4b9d06.svg#arrow-right"></use>
           </svg>
         </button>`;
 
