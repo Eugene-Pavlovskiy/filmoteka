@@ -16,6 +16,7 @@
   align-items: center;
 
   &__arrow {
+    margin: 0 7px;
     width: 40px;
     height: 40px;
 
@@ -37,7 +38,8 @@
     // $btn-gray-color
     background-color: $btn-gray-color;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: $btn-accent-color;
     }
 
@@ -46,9 +48,18 @@
     //   justify-content: center;
     //   align-items: center;
     // }
+
+    transition-property: background-color;
+    @extend %transition;
+
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
   }
 
   &__number {
+    margin: 0 3px;
+
     width: 40px;
     height: 40px;
 
@@ -71,20 +82,32 @@
 
     &:hover {
       background-color: $btn-accent-color;
+      transform: scale(1.1);
     }
 
     &--current {
       background-color: $btn-accent-color;
+      // transform: scale(1.05);
     }
 
     // animation: append 5s linear;
+
+    transition-property: background-color, transform;
+    @extend %transition;
   }
   &__container {
     display: flex;
   }
+
+  // @media screen and (max-width: 480px) {
+  //   width: 30px;
+  //   height: 30px;
+  // }
 }
 
 .dots {
+  // margin: 0 3px;
+
   width: 40px;
   height: 40px;
 

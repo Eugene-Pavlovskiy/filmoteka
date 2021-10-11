@@ -17,3 +17,13 @@
     padding-right: 71px;
   }
 }
+
+.inner-container {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  min-height: 100vh;
+}
