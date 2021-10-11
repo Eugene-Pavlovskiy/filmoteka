@@ -7,6 +7,7 @@ export default function getRefs() {
     galleryTrending: document.querySelector('.gallery-trending__list'),
     paginationContainer: document.querySelector('.pagination-container'),
     paginationMenu: document.querySelector('.pagination'),
+    spiner: document.querySelector('.js-spiner'),
 
     logo: document.querySelector('.js-logo'),
     home: document.querySelector('.js-nav-home'),

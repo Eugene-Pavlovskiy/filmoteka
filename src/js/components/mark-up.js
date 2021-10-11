@@ -22,11 +22,13 @@ function clearGallery() {
 
 async function appendMarkUp(callBack) {
   clearGallery();
+  refs.spiner.classList.remove('loaded');
   refs.galleryTrending.insertAdjacentHTML('beforeend', await makeMarkUp(callBack));
   updatePaginationMenu(
     JSON.parse(sessionStorage.getItem('pageCounter')),
     JSON.parse(sessionStorage.getItem('totalPages')),
   );
+  refs.spiner.classList.add('loaded');
 }
 
 function updatePaginationMenu(page, totalPages = 20) {

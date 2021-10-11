@@ -17,7 +17,7 @@ sessionStorage.setItem('pageCounter', 1);
 // получение массива жанров с их ид
 getAllGenres();
 // изначальное добавление разметки популярных фильмов
-appendMarkUp(fetchTrendingMovies);
+appendMarkUp(fetchTrendingMovies).then(() => refs.spiner.classList.add('loaded'));
 
 const onFormInputDebounce = debounce(onFormInput, 400);
 
