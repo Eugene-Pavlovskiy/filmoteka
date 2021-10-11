@@ -1,0 +1,46 @@
+{{#if poster_path}}
+<img class="modal-img" src='https://image.tmdb.org/t/p/original/{{poster_path}}' alt="{{title}}">
+{{else}}
+<img class="modal-img" src='https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg' alt="{{title}}">
+{{/if}}
+
+<div class="modal-description">
+    <h2 class="modal-title">{{title}}</h2>
+    <ul class="modal-info-list">
+        <li class="info-list-item">
+            <h3 class="info-list-title">Vote / Votes</h3>
+            <span class="info-list-rating">{{vote_average}}</span>
+            <span class="info-list-rating--slash">/</span>
+            <p class="info-list-rating info-list-rating--white">{{vote_count}}</p>
+        </li>
+        <li class="info-list-item">
+            <h3 class="info-list-title">Popularity</h3>
+            <p class="info-list-description">{{popularity}}</p>
+        </li>
+        <li class="info-list-item">
+            <h3 class="info-list-title">Original Title</h3>
+            <p class="info-list-description--title">{{original_title}}</p>
+        </li>
+        <li class="info-list-item">
+            <h3 class="info-list-title">Genre</h3>
+            <p class="info-list-description">{{#each genres}}<span class="description-genre--name">{{this.name}}
+                </span>{{/each}}</p>
+        </li>
+    </ul>
+    <h3 class="modal-about">About</h3>
+    <p class="about-text">{{overview}}</p>
+    <ul class="modal-btn-list">
+        {{#if b}}
+        <li class="btn-list-item"><button data-name="add-watched" class="btn-watched">add to watched</button></li>
+        {{else}}
+        <li class="btn-list-item"><button data-name="add-watched" class="btn-watched">remuve to watched</button></li>
+        {{/if}}
+        {{#if a}}
+        <li class="btn-list-item"><button data-name="add-queue" class="btn-watched btn-queue">add to queue</button>
+        </li>
+        {{else}}
+        <li class="btn-list-item"><button data-name="add-queue" class="btn-watched btn-queue">remuve to
+                queue</button></li>
+        {{/if}}
+    </ul>
+</div>
