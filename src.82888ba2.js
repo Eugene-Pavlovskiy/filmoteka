@@ -40,4 +40,4 @@ var n,t=arguments[3],r=require("buffer").Buffer;(function(){var r,e=200,u="Unsup
 },{"./refs":"EVoz","./search":"A7jH","lodash":"B1iE"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=r(require("./js/components/refs")),s=require("./js/components/api"),n=require("./js/components/mark-up");function r(e){return e&&e.__esModule?e:{default:e}}require("./js/components/nav");const t=(0,e.default)();sessionStorage.setItem("pageCounter",1),(0,s.getAllGenres)(),(0,n.appendMarkUp)(s.fetchTrendingMovies).then(()=>t.spiner.classList.add("loaded"));
 },{"./sass/main.scss":"clu1","./js/components/refs":"EVoz","./js/components/api":"xkNl","./js/components/mark-up":"xLjV","./js/components/nav":"pMGK"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.fdd9099d.js.map
+//# sourceMappingURL=/filmoteka/src.82888ba2.js.map
