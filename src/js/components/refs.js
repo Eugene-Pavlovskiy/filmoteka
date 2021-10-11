@@ -5,6 +5,8 @@ export default function getRefs() {
     errorText: document.querySelector('.error-text'),
     searchInput: document.querySelector('.search-input'),
     galleryTrending: document.querySelector('.gallery-trending__list'),
+    innerContainer: document.querySelector('.inner-container'),
+    notFoundContainer: document.querySelector('.not-found-container'),
     paginationContainer: document.querySelector('.pagination-container'),
     paginationMenu: document.querySelector('.pagination'),
     spiner: document.querySelector('.js-spiner'),
