@@ -1,6 +1,7 @@
 import getRefs from './refs';
 import { getMovies } from './work-with-movies';
 import makeCard from '../../palets/card.hbs';
+import notFound from '../../palets/not-found.hbs';
 
 const refs = getRefs();
 
@@ -8,7 +9,7 @@ async function makeMarkUp(callBack) {
   const movies = await getMovies(callBack, JSON.parse(sessionStorage.getItem('pageCounter')));
 
   if (!movies) {
-    return;
+    return 0;
   }
 
   const markUp = movies.map(makeCard).join('');
@@ -22,7 +23,22 @@ function clearGallery() {
 
 async function appendMarkUp(callBack) {
   clearGallery();
+
+  refs.notFoundContainer.innerHTML = '';
   refs.spiner.classList.remove('loaded');
+
+  const markUp = await makeMarkUp(callBack);
+
+  if (markUp === 0) {
+    refs.spiner.classList.add('loaded');
+    console.log('stop');
+    // refs.galleryTrending.replaceWith(notFound());
+    console.log(refs.innerContainer);
+    // refs.innerContainer.insertAdjacentHTML('beforebegin', notFound());
+    refs.notFoundContainer.innerHTML = notFound();
+    return;
+  }
+
   refs.galleryTrending.insertAdjacentHTML('beforeend', await makeMarkUp(callBack));
   updatePaginationMenu(
     JSON.parse(sessionStorage.getItem('pageCounter')),
@@ -42,7 +58,6 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   refs.paginationMenu.querySelector('.pagination__container').innerHTML = '';
 
-  console.log(window.innerWidth);
   if (window.innerWidth < 768) {
     if (totalPages < 5) {
       markUp = '';

@@ -1,13 +1,22 @@
 import getRefs from './refs';
+import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
 const refs = getRefs();
 
-import { onHomeClick } from '../../index';
+// import { onHomeClick } from '../../index';
 
-// import { debounce } from 'lodash';
+import { debounce } from 'lodash';
 
 refs.logo.addEventListener('click', navToHome);
 refs.home.addEventListener('click', navToHome);
 refs.library.addEventListener('click', navToLibrary);
+
+// добавляет слушатель на меню пагинации для переключения между страницами популярных фильмов
+refs.paginationMenu.addEventListener('click', trendingPagination);
+// добавляет слушатель на строку для поиска
+// refs.form.addEventListener('input', onFormInputDebounce);
+
+// const onFormInputDebounce = debounce(onFormInput, 400);
+refs.form.addEventListener('input', onFormInputDebounce);
 
 function navToHome(e) {
   e.preventDefault();
