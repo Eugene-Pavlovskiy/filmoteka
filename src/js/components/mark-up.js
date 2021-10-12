@@ -1,7 +1,9 @@
 import getRefs from './refs';
 import { getMovies } from './work-with-movies';
 import makeCard from '../../palets/card.hbs';
+import makeLibraryCard from '../../palets/library-card.hbs';
 import notFound from '../../palets/not-found.hbs';
+import { getWatchedMovies, getQueueMovies } from './api';
 
 const refs = getRefs();
 
@@ -12,7 +14,12 @@ async function makeMarkUp(callBack) {
     return 0;
   }
 
-  const markUp = movies.map(makeCard).join('');
+  let markUp = null;
+  if (callBack === getWatchedMovies || callBack === getQueueMovies) {
+    markUp = movies.map(makeLibraryCard).join('');
+  } else {
+    markUp = movies.map(makeCard).join('');
+  }
 
   return markUp;
 }
@@ -31,15 +38,13 @@ async function appendMarkUp(callBack) {
 
   if (markUp === 0) {
     refs.spiner.classList.add('loaded');
-    console.log('stop');
     // refs.galleryTrending.replaceWith(notFound());
-    console.log(refs.innerContainer);
     // refs.innerContainer.insertAdjacentHTML('beforebegin', notFound());
     refs.notFoundContainer.innerHTML = notFound();
     return;
   }
 
-  refs.galleryTrending.insertAdjacentHTML('beforeend', await makeMarkUp(callBack));
+  refs.galleryTrending.insertAdjacentHTML('beforeend', markUp);
   updatePaginationMenu(
     JSON.parse(sessionStorage.getItem('pageCounter')),
     JSON.parse(sessionStorage.getItem('totalPages')),
@@ -103,8 +108,8 @@ function updatePaginationMenu(page, totalPages = 20) {
     }
   } else {
     // начало пагинации не под мобилку
-    // адаптировано под мобилку
     if (totalPages < 10) {
+      markUp = '';
       for (let i = 1; i <= totalPages; i++) {
         if (i === page) {
           markUp += `<button class="pagination__number pagination__number--current" type="button">${page}</button>`;

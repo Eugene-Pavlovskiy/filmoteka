@@ -1,5 +1,6 @@
 import getRefs from './refs';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
+import { loadWatched, loadQueue } from './library';
 const refs = getRefs();
 
 // import { onHomeClick } from '../../index';
@@ -48,10 +49,12 @@ function showWatched() {
   refs.btnWatched.classList.add('btn-active');
   refs.btnQueue.classList.remove('btn-active');
   // сюда подключить список просмотренных
+  loadWatched();
 }
 
 function showQueue() {
   refs.btnQueue.classList.add('btn-active');
   refs.btnWatched.classList.remove('btn-active');
   // сюда подключить очередь просмотра
+  loadQueue();
 }

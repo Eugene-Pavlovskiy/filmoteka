@@ -1,8 +1,15 @@
 import getRefs from './refs';
+import { getWatchedMovies, getQueueMovies } from './api';
 
 const refs = getRefs();
 
+let moviesArr = null;
+
 async function getMovies(callBack, page) {
+  // callBack === getWatchedMovies;
+  if (callBack === getWatchedMovies || callBack === getQueueMovies) {
+    return callBack(page);
+  }
   const movies = await callBack(page);
 
   if (movies === undefined || movies === null || movies.length < 1) {
@@ -35,6 +42,7 @@ async function getMovies(callBack, page) {
       vote_count,
       original_title,
       popularity,
+      id,
     } = movies[i];
     formatedMovies.push({
       title,
@@ -45,8 +53,11 @@ async function getMovies(callBack, page) {
       vote_count,
       original_title,
       popularity,
+      id,
     });
     formatedMovies[i].genres = genresArr[i];
+    formatedMovies[i].formated = true;
+    formatedMovies[i].index = i;
 
     if (formatedMovies[i].genres.length > 3) {
       formatedMovies[i].genresMin = formatedMovies[i].genres.slice(0, 3);
@@ -67,13 +78,18 @@ async function getMovies(callBack, page) {
     formatedMovies[i].release_date = formatedMovies[i].release_date.slice(0, 4);
   }
 
-  saveGallery(formatedMovies);
+  moviesArr = formatedMovies;
+  // saveGallery(formatedMovies);
   return formatedMovies;
 }
 
 function getGenres({ genre_ids: gen }) {
   const gens = [];
   const allGenres = JSON.parse(localStorage.getItem('genres'));
+
+  if (!gen) {
+    return;
+  }
 
   // перебирает массив id жанров в фильме, сравнивает с существующим массивом и формирует новый индивидуальный массив для одного фильма
   for (let i = 0; i < gen.length; i += 1) {
@@ -92,4 +108,4 @@ function saveGallery(movies) {
   localStorage.setItem('currentColection', JSON.stringify(movies));
 }
 
-export { getMovies };
+export { getMovies, moviesArr };

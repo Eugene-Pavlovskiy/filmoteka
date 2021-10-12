@@ -64,6 +64,27 @@
     color: #ff6b08;
   }
 
+  &__score {
+    margin-left: 10px;
+    width: 36px;
+    height: 16px;
+
+    color: $white-color;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background: $accent-color;
+    border-radius: 5px;
+  }
+
+  pointer-events: none;
+
   cursor: pointer;
   // animation: append 2s linear 3s;
 
@@ -81,6 +102,24 @@
   animation: append 600ms linear;
 
   // animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+.gallery__item {
+  cursor: pointer;
+  // animation: append 2s linear 3s;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+
+  transition-property: transform;
+  @extend %transition;
+
+  // animation-duration: 1000ms;
+  // animation-name: append;
+
+  animation: append 600ms linear;
 }
 
 // animation: append 5s linear;

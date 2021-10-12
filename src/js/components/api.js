@@ -45,4 +45,26 @@ async function fetchMovies(query) {
   };
 }
 
-export { getAllGenres, fetchTrendingMovies, fetchMovies };
+function getWatchedMovies(pageNum) {
+  const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
+
+  sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
+
+  const res = movies.splice((pageNum - 1) * 20, 20);
+
+  return res;
+}
+
+function getQueueMovies(pageNum) {
+  const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+
+  sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
+
+  const res = movies.splice((pageNum - 1) * 20, 20);
+
+  return res;
+}
+
+export { getAllGenres, fetchTrendingMovies, fetchMovies, getWatchedMovies, getQueueMovies };
+
+// asd
