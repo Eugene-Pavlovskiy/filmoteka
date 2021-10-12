@@ -19,6 +19,8 @@ export default function getRefs() {
     btnsLibrary: document.querySelector('[data-action="btn-library-show"]'),
     btnWatched: document.querySelector('[data-action="btn-watched"]'),
     btnQueue: document.querySelector('[data-action="btn-queue"]'),
+    btnAddToWatched: document.querySelector('[data-action="toggle-watched"]'),
+    btnAddToQueue: document.querySelector('[data-action="toggle-queue"]'),
   };
 }
 

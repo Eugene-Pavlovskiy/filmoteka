@@ -5,6 +5,8 @@ import { appendMarkUp } from './js/components/mark-up';
 import './js/components/nav';
 import { moviesArr } from './js/components/work-with-movies';
 
+import './js/components/Lib';
+
 getAllGenres();
 // изначальные настройки при открытии страницы
 

@@ -35,6 +35,7 @@ async function getMovies(callBack, page) {
   for (let i = 0; i < movies.length; i++) {
     const {
       title,
+      id,
       release_date,
       poster_path,
       vote_average,
@@ -46,6 +47,7 @@ async function getMovies(callBack, page) {
     } = movies[i];
     formatedMovies.push({
       title,
+      id,
       release_date,
       poster_path,
       vote_average,

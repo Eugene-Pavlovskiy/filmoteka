@@ -2,6 +2,7 @@
 
 
   {{#if poster_path}}
+  <div class="film-poster">
   <img class="card-thumb__img" 
   srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
   src="https://image.tmdb.org/t/p/w780{{poster_path}}"
@@ -13,6 +14,7 @@
   alt="poster of {{title}}">
   </img>
   {{/if}}
+
   <span class="card-thumb__title">{{title}}</span> --}}
   {{!-- <span class="card-thumb__info">{{genresMin}} | {{release_date}} {{vote_average}}</span> --}}
   {{!-- <span class="card-thumb__info">{{genresMin}} | {{release_date}}</span>
@@ -34,6 +36,20 @@
   alt="poster of {{title}}">
   </img>
   {{/if}}
+
+  <div class="film-card-actions">
+    <div class="card-btns-library">
+      <ul class="poster-button-list">
+        <li class="card-button-list-item">
+          <button type="button" class="button poster-button" data-action="toggle-watched">Add to watched</button>
+        </li>
+        <li class="card-button-list-item">
+          <button type="button" class="button poster-button" data-action="toggle-queue">Add to queue</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </div>
   <span class="card-thumb__title">{{title}}</span>
   {{!-- <span class="card-thumb__info">{{genresMin}} | {{release_date}} {{vote_average}}</span> --}}
   <span class="card-thumb__info">{{genresMin}} | {{release_date}}</span>
