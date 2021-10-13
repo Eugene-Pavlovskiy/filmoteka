@@ -1,0 +1,87 @@
+{{!-- <li class="card-thumb">
+
+
+  {{#if poster_path}}
+  <img class="card-thumb__img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img>
+  {{else}}
+  <img class="card-thumb__img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
+  <span class="card-thumb__title">{{title}}</span>
+  <span class="card-thumb__info">{{genresMin}} | {{release_date}} <span class="card-thumb__score">{{vote_average}}</span></span>
+</li> --}}
+
+
+{{!-- <li class="gallery__item" data-index="{{index}}">
+
+
+ <div class="card-thumb">
+    {{#if poster_path}}
+  <img class="card-thumb__img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img>
+  {{else}}
+  <img class="card-thumb__img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
+  <span class="card-thumb__title">{{title}}</span>
+  <span class="card-thumb__info">{{genresMin}} | {{release_date}}<span class="card-thumb__score">{{vote_average}}</span></span>
+ </div>
+</li> --}}
+
+<li class="gallery__item">
+
+
+  <div class="card-thumb">
+   <div class="card-top">
+      {{#if poster_path}}
+  <div class="film-poster">
+  <img class="card-thumb__img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img>
+  {{else}}
+  <img class="card-thumb__img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
+  </div>
+  <div class="film-card-actions">
+    <div class="card-btns-library">
+      <ul class="poster-button-list">
+        <li class="card-button-list-item">
+          {{!-- <button type="button" class="button poster-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button> --}}
+          {{#if addedToWatched}}
+          <button type="button" class="button poster-button btn-active" data-action="toggle-watched"  data-index="{{index}}">Remove from watched</button>
+          {{else}}
+          <button type="button" class="button poster-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button>
+          {{/if}}
+        </li>
+        <li class="card-button-list-item">
+          {{!-- <button type="button" class="button poster-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button> --}}
+          {{#if addedToQueue}}
+          <button type="button" class="button poster-button btn-active" data-action="toggle-queue"  data-index="{{index}}">Remove from queue</button>
+          {{else}}
+          <button type="button" class="button poster-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button>
+          {{/if}}
+        </li>
+      </ul>
+    </div>
+  </div>
+   </div>
+  <span class="card-thumb__title">{{title}}</span>
+  <span class="card-thumb__info">{{genresMin}} | {{release_date}} <span class="card-thumb__score">{{vote_average}}</span></span>
+  </div>
+</li>
