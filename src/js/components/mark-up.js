@@ -110,9 +110,11 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   markUp += `<button class="pagination__arrow js-arrow-left">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/filmoteka/sprite.ef4b9d06.svg#arrow-left"></use>
+            <use href="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/sprite.svg#arrow-left"></use>
           </svg>
         </button>`;
+
+  // 'https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg';
 
   refs.paginationMenu.querySelector('.pagination__container').innerHTML = '';
 
@@ -272,7 +274,7 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   markUp += `<button class="pagination__arrow js-arrow-right">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/filmoteka/sprite.ef4b9d06.svg#arrow-right"></use>
+            <use href="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/sprite.svg#arrow-right"></use>
           </svg>
         </button>`;
 
