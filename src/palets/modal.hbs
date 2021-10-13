@@ -1,4 +1,4 @@
-{{#if poster_path}}
+<!--{{#if poster_path}}
 <img class="modal-img" src='https://image.tmdb.org/t/p/original/{{poster_path}}' alt="{{title}}">
 {{else}}
 <img class="modal-img" src='https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg' alt="{{title}}">
@@ -43,4 +43,41 @@
                 queue</button></li>
         {{/if}}
     </ul>
+</div> -->
+
+<div class="modal-image-block">
+    <img class="modal-img" src="{{poster_path}}" alt="{{title}}">
+</div>
+<div>
+    <h2 class="modal-title">{{title}}</h2>
+    <div>
+        <div class="modal-film-block">
+            <span class="info-list-title" id="title">Vote / Votes</span>
+            <span class="info-list-rating accent votes">{{vote_average}}</span>&nbsp/&nbsp
+            <span class="info-list-rating votes">{{vote_count}}</span>
+        </div>
+        <div class="modal-film-block">
+            <span class="info-list-title" id="title">Popularity</span>
+            <span class="info-list-rating">{{popularity}}</span>
+        </div>
+        <div class="modal-film-block">
+            <span class="info-list-title" id="title">Original Title</span>
+            <span class="modal-film-res uppersace">{{original_title}}</span>
+        </div>
+        <div class="modal-film-block">
+            <span class="info-list-title" id="title">Genre</span>
+            <span class="modal-film-res">{{genres}}</span>
+        </div>
+    </div>
+
+    <div class="modal-block-description">
+        <h3 class="modal-about">About </h3>
+        <p class="modal-about-text">{{overview}}</p>
+    </div>
+
+    <div class="modal-buttons">
+        <button type="button" class="accent modal-button">add to watched</button>
+        <button type="button" class="modal-button">add to
+            queue</button>
+    </div>
 </div>
