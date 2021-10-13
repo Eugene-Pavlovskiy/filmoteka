@@ -1,7 +1,7 @@
 import getRefs from './refs';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
 import { loadWatched, loadQueue } from './library';
-import { getButton } from './Lib';
+import { getButton } from './lib';
 const refs = getRefs();
 
 // import { onHomeClick } from '../../index';
