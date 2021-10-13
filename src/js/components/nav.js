@@ -1,6 +1,7 @@
 import getRefs from './refs';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
 import { loadWatched, loadQueue } from './library';
+import { getButton } from './Lib';
 const refs = getRefs();
 
 // import { onHomeClick } from '../../index';
@@ -10,6 +11,8 @@ import { debounce } from 'lodash';
 refs.logo.addEventListener('click', navToHome);
 refs.home.addEventListener('click', navToHome);
 refs.library.addEventListener('click', navToLibrary);
+
+refs.galleryTrending.addEventListener('click', getButton);
 
 // добавляет слушатель на меню пагинации для переключения между страницами популярных фильмов
 refs.paginationMenu.addEventListener('click', trendingPagination);

@@ -11,12 +11,13 @@
 
   & .button {
     width: 70px;
+    pointer-events: auto;
   }
 }
 
-.card-thumb:hover .film-card-actions,
-.card-thumb:focus .film-card-actions {
-  transform: translateY(-13%);
+.gallery__item:hover .film-card-actions,
+.gallery__item:focus .film-card-actions {
+  transform: translateY(-15%);
 }
 
 .film-poster {

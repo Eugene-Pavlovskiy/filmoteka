@@ -9,17 +9,65 @@ const refs = getRefs();
 
 async function makeMarkUp(callBack) {
   const movies = await getMovies(callBack, JSON.parse(sessionStorage.getItem('pageCounter')));
+  // console.log('movies from markUp: ', movies);
 
   if (!movies) {
     return 0;
   }
 
+  // let a = JSON.parse(localStorage.getItem('moviesInWatched'));
+  // let b = JSON.parse(localStorage.getItem('moviesInQueue'));
+
+  // if (!a) {
+  //   a = [];
+  // }
+
+  // if (!b) {
+  //   b = [];
+  // }
+  // console.log(movies);
+
   let markUp = null;
   if (callBack === getWatchedMovies || callBack === getQueueMovies) {
     markUp = movies.map(makeLibraryCard).join('');
   } else {
+    markUp = '';
     markUp = movies.map(makeCard).join('');
+    // for (let i = 0; i < movies.length; i++) {
+    //   for (let j = 0; j < a.length; j++) {
+    //     if (movies[i].id === a[j].id) {
+    //       movies[i].addedToWatched = true;
+    //       // makeCard(movies[i]);
+    //       continue;
+    //     }
+
+    //     // markUp += makeCard(movies[i]).join('');
+    //   }
+
+    //   for (let j = 0; j < b.length; j++) {
+    //     if (movies[i].id === b[j].id) {
+    //       movies[i].addedToQueue = true;
+    //       // makeCard(movies[i]);
+    //       continue;
+    //     }
+    //   }
+    //   markUp += makeCard(movies[i]);
+    //   // markUp.join('');
+    //   // console.log(markUp);
+    // }
   }
+
+  // for (let i = 0; i < movies.length; i++) {
+  //   for (let j = 0; i < lib; j++){
+  //     if (movies[i] === lib[j]) {
+  //       makeCard(movies[i], a = true)
+  //     }
+
+  //     markUp += makeCard(movies[i])
+  //   }
+  // }
+
+  // console.log(markUp);
 
   return markUp;
 }
@@ -54,6 +102,11 @@ async function appendMarkUp(callBack) {
 
 function updatePaginationMenu(page, totalPages = 20) {
   let markUp = '';
+
+  if (totalPages <= 1) {
+    refs.paginationMenu.querySelector('.pagination__container').innerHTML = markUp;
+    return;
+  }
 
   markUp += `<button class="pagination__arrow js-arrow-left">
           <svg class="pagination__arrow-logo" width="16px" height="16px">

@@ -41,6 +41,7 @@
     height: 400px;
     width: 100%;
     border-radius: 5px;
+    pointer-events: none;
   }
 
   &__title,
@@ -51,6 +52,8 @@
     font-style: normal;
     font-size: 12px;
     line-height: 1.33;
+
+    pointer-events: none;
   }
 
   &__title {
@@ -86,12 +89,15 @@
   pointer-events: none;
 
   cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
   // animation: append 2s linear 3s;
 
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
+  // &:hover,
+  // &:focus {
+  //   transform: scale(1.1);
+  // }
 
   transition-property: transform;
   @extend %transition;
@@ -102,6 +108,11 @@
   animation: append 600ms linear;
 
   // animation: name duration timing-function delay iteration-count direction fill-mode;
+}
+
+.card-top {
+  position: relative;
+  overflow: hidden;
 }
 
 .gallery__item {

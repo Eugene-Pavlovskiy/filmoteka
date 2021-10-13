@@ -43,7 +43,6 @@ async function getMovies(callBack, page) {
       vote_count,
       original_title,
       popularity,
-      id,
     } = movies[i];
     formatedMovies.push({
       title,
@@ -55,7 +54,6 @@ async function getMovies(callBack, page) {
       vote_count,
       original_title,
       popularity,
-      id,
     });
     formatedMovies[i].genres = genresArr[i];
     formatedMovies[i].formated = true;
@@ -81,8 +79,37 @@ async function getMovies(callBack, page) {
   }
 
   moviesArr = formatedMovies;
-  // saveGallery(formatedMovies);
+  const res = chek(formatedMovies);
+  saveGallery(res);
   return formatedMovies;
+}
+
+function chek(moviesArr) {
+  let watchedMoviesArr = JSON.parse(localStorage.getItem('moviesInWatched'));
+  let queueMoviesArr = JSON.parse(localStorage.getItem('moviesInQueue'));
+  if (!watchedMoviesArr) {
+    watchedMoviesArr = [];
+  }
+
+  if (!queueMoviesArr) {
+    queueMoviesArr = [];
+  }
+
+  for (let i = 0; i < moviesArr.length; i++) {
+    for (let j = 0; j < watchedMoviesArr.length; j++) {
+      if (moviesArr[i].id === watchedMoviesArr[j].id) {
+        moviesArr[i].addedToWatched = true;
+      }
+    }
+
+    for (let j = 0; j < queueMoviesArr.length; j++) {
+      if (moviesArr[i].id === queueMoviesArr[j].id) {
+        moviesArr[i].addedToQueue = true;
+      }
+    }
+  }
+
+  return moviesArr;
 }
 
 function getGenres({ genre_ids: gen }) {

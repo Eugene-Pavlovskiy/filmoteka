@@ -22,7 +22,8 @@ function loadWatched() {
 
 function loadQueue() {
   sessionStorage.setItem('pageCounter', 1);
-  appendMarkUp(getWatchedMovies);
+
+  appendMarkUp(getQueueMovies);
 
   refs.paginationMenu.removeEventListener('click', libraryPagination(getWatchedMovies));
   refs.paginationMenu.addEventListener('click', libraryPagination(getQueueMovies));

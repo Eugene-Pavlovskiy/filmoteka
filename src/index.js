@@ -18,33 +18,34 @@ sessionStorage.setItem('pageCounter', 1);
 // изначальное добавление разметки популярных фильмов
 appendMarkUp(fetchTrendingMovies).then(() => refs.spiner.classList.add('loaded'));
 
-refs.galleryTrending.addEventListener('click', onCardClick);
+// refs.galleryTrending.addEventListener('click', onCardClick);
 
-function onCardClick(e) {
-  if (e.target.nodeName !== 'LI') {
-    console.log('ne li');
-    return;
-  }
-  console.log(moviesArr);
+// function onCardClick(e) {
+//   console.log(e.target);
+//   if (e.target.nodeName !== 'LI') {
+//     console.log('ne LI');
+//     return;
+//   }
+//   console.log(moviesArr);
 
-  console.log(e.target.dataset.index);
+//   console.log(e.target.dataset.index);
 
-  const index = e.target.dataset.index;
+//   const index = e.target.dataset.index;
 
-  addToWatched(moviesArr[index]);
+//   addToWatched(moviesArr[index]);
 
-  // return moviesArr[index];
-}
+//   // return moviesArr[index];
+// }
 
-function addToWatched(movie) {
-  let watchedMoviesArr = JSON.parse(localStorage.getItem('moviesInWatched'));
-  if (!watchedMoviesArr) {
-    watchedMoviesArr = [];
-  }
+// function addToWatched(movie) {
+//   let watchedMoviesArr = JSON.parse(localStorage.getItem('moviesInWatched'));
+//   if (!watchedMoviesArr) {
+//     watchedMoviesArr = [];
+//   }
 
-  watchedMoviesArr.push(movie);
+//   watchedMoviesArr.push(movie);
 
-  const arch = JSON.stringify(watchedMoviesArr);
+//   const arch = JSON.stringify(watchedMoviesArr);
 
-  localStorage.setItem('moviesInWatched', arch);
-}
+//   localStorage.setItem('moviesInWatched', arch);
+// }
