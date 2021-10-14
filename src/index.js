@@ -3,6 +3,7 @@ import getRefs from './js/components/refs';
 import { getAllGenres, fetchTrendingMovies } from './js/components/api';
 import { appendMarkUp } from './js/components/mark-up';
 import './js/components/nav';
+import './js/components/footer-modal';
 
 // изначальные настройки при открытии страницы
 
@@ -14,3 +15,4 @@ sessionStorage.setItem('pageCounter', 1);
 getAllGenres();
 // изначальное добавление разметки популярных фильмов
 appendMarkUp(fetchTrendingMovies).then(() => refs.spiner.classList.add('loaded'));
+
