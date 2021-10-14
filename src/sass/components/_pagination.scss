@@ -134,3 +134,15 @@
     opacity: 1;
   }
 }
+
+.js-arrow-left {
+  background-image: url('../images/arrow-left.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.js-arrow-right {
+  background-image: url('../images/arrow-right.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+}

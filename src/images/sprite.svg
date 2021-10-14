@@ -15,8 +15,9 @@
     <path fill="none" stroke="#fff" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667S20.558 3.999 14.667 3.999 4 8.775 4 14.666s4.776 10.667 10.667 10.667zM28 28.001l-5.8-5.8"></path>
   </symbol>
   <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="arrow-left">
-    <path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" stroke="#000" d="M25.333 16H6.666M16 25.333 6.667 16 16 6.667"></path>
+    <path fill="#ff0000" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.667" stroke="#000" d="M25.333 16H6.666M16 25.333 6.667 16 16 6.667"></path>
   </symbol>
+  </svg>
   
 
 <!-- <svg class="icon">

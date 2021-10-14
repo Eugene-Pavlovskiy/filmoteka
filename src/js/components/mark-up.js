@@ -1,18 +1,73 @@
 import getRefs from './refs';
 import { getMovies } from './work-with-movies';
 import makeCard from '../../palets/card.hbs';
+import makeLibraryCard from '../../palets/library-card.hbs';
 import notFound from '../../palets/not-found.hbs';
+import { getWatchedMovies, getQueueMovies } from './api';
 
 const refs = getRefs();
 
 async function makeMarkUp(callBack) {
   const movies = await getMovies(callBack, JSON.parse(sessionStorage.getItem('pageCounter')));
+  // console.log('movies from markUp: ', movies);
 
   if (!movies) {
     return 0;
   }
 
-  const markUp = movies.map(makeCard).join('');
+  // let a = JSON.parse(localStorage.getItem('moviesInWatched'));
+  // let b = JSON.parse(localStorage.getItem('moviesInQueue'));
+
+  // if (!a) {
+  //   a = [];
+  // }
+
+  // if (!b) {
+  //   b = [];
+  // }
+  // console.log(movies);
+
+  let markUp = null;
+  if (callBack === getWatchedMovies || callBack === getQueueMovies) {
+    markUp = movies.map(makeLibraryCard).join('');
+  } else {
+    markUp = '';
+    markUp = movies.map(makeCard).join('');
+    // for (let i = 0; i < movies.length; i++) {
+    //   for (let j = 0; j < a.length; j++) {
+    //     if (movies[i].id === a[j].id) {
+    //       movies[i].addedToWatched = true;
+    //       // makeCard(movies[i]);
+    //       continue;
+    //     }
+
+    //     // markUp += makeCard(movies[i]).join('');
+    //   }
+
+    //   for (let j = 0; j < b.length; j++) {
+    //     if (movies[i].id === b[j].id) {
+    //       movies[i].addedToQueue = true;
+    //       // makeCard(movies[i]);
+    //       continue;
+    //     }
+    //   }
+    //   markUp += makeCard(movies[i]);
+    //   // markUp.join('');
+    //   // console.log(markUp);
+    // }
+  }
+
+  // for (let i = 0; i < movies.length; i++) {
+  //   for (let j = 0; i < lib; j++){
+  //     if (movies[i] === lib[j]) {
+  //       makeCard(movies[i], a = true)
+  //     }
+
+  //     markUp += makeCard(movies[i])
+  //   }
+  // }
+
+  // console.log(markUp);
 
   return markUp;
 }
@@ -31,15 +86,13 @@ async function appendMarkUp(callBack) {
 
   if (markUp === 0) {
     refs.spiner.classList.add('loaded');
-    console.log('stop');
     // refs.galleryTrending.replaceWith(notFound());
-    console.log(refs.innerContainer);
     // refs.innerContainer.insertAdjacentHTML('beforebegin', notFound());
     refs.notFoundContainer.innerHTML = notFound();
     return;
   }
 
-  refs.galleryTrending.insertAdjacentHTML('beforeend', await makeMarkUp(callBack));
+  refs.galleryTrending.insertAdjacentHTML('beforeend', markUp);
   updatePaginationMenu(
     JSON.parse(sessionStorage.getItem('pageCounter')),
     JSON.parse(sessionStorage.getItem('totalPages')),
@@ -50,11 +103,18 @@ async function appendMarkUp(callBack) {
 function updatePaginationMenu(page, totalPages = 20) {
   let markUp = '';
 
+  if (totalPages <= 1) {
+    refs.paginationMenu.querySelector('.pagination__container').innerHTML = markUp;
+    return;
+  }
+
   markUp += `<button class="pagination__arrow js-arrow-left">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/filmoteka/sprite.ef4b9d06.svg#arrow-left"></use>
+            <use href="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/arrow-left.svg"></use>
           </svg>
         </button>`;
+
+  // 'https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg';
 
   refs.paginationMenu.querySelector('.pagination__container').innerHTML = '';
 
@@ -103,8 +163,8 @@ function updatePaginationMenu(page, totalPages = 20) {
     }
   } else {
     // начало пагинации не под мобилку
-    // адаптировано под мобилку
     if (totalPages < 10) {
+      markUp = '';
       for (let i = 1; i <= totalPages; i++) {
         if (i === page) {
           markUp += `<button class="pagination__number pagination__number--current" type="button">${page}</button>`;
@@ -214,7 +274,7 @@ function updatePaginationMenu(page, totalPages = 20) {
 
   markUp += `<button class="pagination__arrow js-arrow-right">
           <svg class="pagination__arrow-logo" width="16px" height="16px">
-            <use href="/filmoteka/sprite.ef4b9d06.svg#arrow-right"></use>
+            <use href="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/arrow-right.svg"></use>
           </svg>
         </button>`;
 

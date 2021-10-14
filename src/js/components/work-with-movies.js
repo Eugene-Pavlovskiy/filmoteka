@@ -1,8 +1,15 @@
 import getRefs from './refs';
+import { getWatchedMovies, getQueueMovies } from './api';
 
 const refs = getRefs();
 
+let moviesArr = null;
+
 async function getMovies(callBack, page) {
+  // callBack === getWatchedMovies;
+  if (callBack === getWatchedMovies || callBack === getQueueMovies) {
+    return callBack(page);
+  }
   const movies = await callBack(page);
 
   if (movies === undefined || movies === null || movies.length < 1) {
@@ -28,6 +35,7 @@ async function getMovies(callBack, page) {
   for (let i = 0; i < movies.length; i++) {
     const {
       title,
+      id,
       release_date,
       poster_path,
       vote_average,
@@ -38,6 +46,7 @@ async function getMovies(callBack, page) {
     } = movies[i];
     formatedMovies.push({
       title,
+      id,
       release_date,
       poster_path,
       vote_average,
@@ -47,6 +56,8 @@ async function getMovies(callBack, page) {
       popularity,
     });
     formatedMovies[i].genres = genresArr[i];
+    formatedMovies[i].formated = true;
+    formatedMovies[i].index = i;
 
     if (formatedMovies[i].genres.length > 3) {
       formatedMovies[i].genresMin = formatedMovies[i].genres.slice(0, 3);
@@ -67,13 +78,47 @@ async function getMovies(callBack, page) {
     formatedMovies[i].release_date = formatedMovies[i].release_date.slice(0, 4);
   }
 
-  saveGallery(formatedMovies);
+  moviesArr = formatedMovies;
+  const res = chek(formatedMovies);
+  saveGallery(res);
   return formatedMovies;
+}
+
+function chek(moviesArr) {
+  let watchedMoviesArr = JSON.parse(localStorage.getItem('moviesInWatched'));
+  let queueMoviesArr = JSON.parse(localStorage.getItem('moviesInQueue'));
+  if (!watchedMoviesArr) {
+    watchedMoviesArr = [];
+  }
+
+  if (!queueMoviesArr) {
+    queueMoviesArr = [];
+  }
+
+  for (let i = 0; i < moviesArr.length; i++) {
+    for (let j = 0; j < watchedMoviesArr.length; j++) {
+      if (moviesArr[i].id === watchedMoviesArr[j].id) {
+        moviesArr[i].addedToWatched = true;
+      }
+    }
+
+    for (let j = 0; j < queueMoviesArr.length; j++) {
+      if (moviesArr[i].id === queueMoviesArr[j].id) {
+        moviesArr[i].addedToQueue = true;
+      }
+    }
+  }
+
+  return moviesArr;
 }
 
 function getGenres({ genre_ids: gen }) {
   const gens = [];
   const allGenres = JSON.parse(localStorage.getItem('genres'));
+
+  if (!gen) {
+    return;
+  }
 
   // перебирает массив id жанров в фильме, сравнивает с существующим массивом и формирует новый индивидуальный массив для одного фильма
   for (let i = 0; i < gen.length; i += 1) {
@@ -92,4 +137,4 @@ function saveGallery(movies) {
   localStorage.setItem('currentColection', JSON.stringify(movies));
 }
 
-export { getMovies };
+export { getMovies, moviesArr };
