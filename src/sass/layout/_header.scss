@@ -156,6 +156,17 @@
   width: 280px;
   height: 20px;
 
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid $accent-color;
+    padding-bottom: 10px;
+  }
+
+  &:hover .icon-search,
+  &:focus .icon-search {
+    transform: scale(1.3);
+  }
+
   @media screen and (min-width: 768px) {
     width: 336px;
   }
@@ -176,6 +187,13 @@
 
 .icon-search svg {
   display: block;
+}
+
+// width="12" height="12"
+
+.icon-search {
+  width: 12px;
+  height: 12px;
 }
 
 .error-text {
