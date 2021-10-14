@@ -25,7 +25,7 @@ async function fetchTrendingMovies(pageNum) {
   const parsedRespons = await firstRespons.json();
 
   sessionStorage.setItem('totalPages', parsedRespons.total_pages);
-
+    
   // с сервера приходит объект запроса, массив с фильмами в свойстве result
   return parsedRespons.results;
 }
