@@ -6,9 +6,13 @@ const refs = getRefs();
 let moviesArr = null;
 
 async function getMovies(callBack, page) {
-  // callBack === getWatchedMovies;
   if (callBack === getWatchedMovies || callBack === getQueueMovies) {
-    return callBack(page);
+    const m = callBack(page);
+    for (let i = 0; i < m.length; i++) {
+      m[i].index = i;
+    }
+    saveGallery(m);
+    return m;
   }
   const movies = await callBack(page);
 
@@ -58,6 +62,8 @@ async function getMovies(callBack, page) {
     formatedMovies[i].genres = genresArr[i];
     formatedMovies[i].formated = true;
     formatedMovies[i].index = i;
+    formatedMovies[i].popularity =
+      Math.round((formatedMovies[i].popularity + Number.EPSILON) * 10) / 10;
 
     if (formatedMovies[i].genres.length > 3) {
       formatedMovies[i].genresMin = formatedMovies[i].genres.slice(0, 3);
@@ -66,20 +72,30 @@ async function getMovies(callBack, page) {
       formatedMovies[i].genresMin = formatedMovies[i].genres.slice(0, 3);
     }
 
-    formatedMovies[i].genresMin = formatedMovies[i].genresMin.join(', ');
+    let str = formatedMovies[i].genresMin.join(', ');
+
+    for (let i = 0; str.length > 31; i++) {
+      str = str.split(', ');
+      str = str.slice(0, str.length - 2);
+      str.push('Other');
+      str = str.join(', ');
+    }
+
+    formatedMovies[i].genresMin = str;
 
     if (formatedMovies[i].genresMin.length < 1) {
       formatedMovies[i].genresMin = 'unknown';
     }
 
-    if (formatedMovies[i].release_date === undefined) {
-      formatedMovies[i].release_date = 'un';
+    if (formatedMovies[i].release_date === undefined || formatedMovies[i].release_date === '') {
+      formatedMovies[i].release_date = 'unknown';
+    } else {
+      formatedMovies[i].release_date = formatedMovies[i].release_date.slice(0, 4);
     }
-    formatedMovies[i].release_date = formatedMovies[i].release_date.slice(0, 4);
   }
 
-  moviesArr = formatedMovies;
   const res = chek(formatedMovies);
+  moviesArr = res;
   saveGallery(res);
   return formatedMovies;
 }

@@ -1,23 +1,20 @@
 import getRefs from './refs';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
 import { loadWatched, loadQueue } from './library';
-import { getButton } from './lib';
+import { getButton } from './adding-to-library';
+import { onCardClick } from './modal';
 const refs = getRefs();
-
-// import { onHomeClick } from '../../index';
-
-import { debounce } from 'lodash';
 
 refs.logo.addEventListener('click', navToHome);
 refs.home.addEventListener('click', navToHome);
 refs.library.addEventListener('click', navToLibrary);
+refs.galleryTrending.addEventListener('click', onCardClick);
 
 refs.galleryTrending.addEventListener('click', getButton);
 
 // добавляет слушатель на меню пагинации для переключения между страницами популярных фильмов
 refs.paginationMenu.addEventListener('click', trendingPagination);
 // добавляет слушатель на строку для поиска
-// refs.form.addEventListener('input', onFormInputDebounce);
 
 // const onFormInputDebounce = debounce(onFormInput, 400);
 refs.form.addEventListener('input', onFormInputDebounce);
@@ -34,6 +31,7 @@ function navToHome(e) {
 }
 
 function navToLibrary(e) {
+  refs.paginationMenu.removeEventListener('click', trendingPagination);
   e.preventDefault();
   refs.library.classList.add('nav-link-current');
   refs.home.classList.remove('nav-link-current');

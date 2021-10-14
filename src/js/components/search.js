@@ -7,7 +7,6 @@ import { appendMarkUp } from './mark-up';
 const refs = getRefs();
 
 const onFormInputDebounce = debounce(onFormInput, 400);
-// refs.form.addEventListener('input', onFormInputDebounce);
 
 function trendingPagination(e) {
   updateGallery(e, fetchTrendingMovies);
@@ -63,4 +62,4 @@ async function onFormInput(e) {
   appendMarkUp(f);
 }
 
-export { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce };
+export { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce, forListenerRemoval };

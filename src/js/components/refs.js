@@ -21,6 +21,13 @@ export default function getRefs() {
     btnQueue: document.querySelector('[data-action="btn-queue"]'),
     btnAddToWatched: document.querySelector('.poster-button'),
     btnAddToQueue: document.querySelector('[data-action="toggle-queue"]'),
+
+    modalContentBox: document.querySelector('[data-film="popap"]'),
+
+    // модалка
+    modalClose: document.querySelector('.modal-close'),
+    modalFilm: document.querySelector('.modal'),
+    backdrop: document.querySelector('.backdrop'),
   };
 }
 

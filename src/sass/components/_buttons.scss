@@ -15,11 +15,6 @@
   box-shadow: 0px 8px 43px 0px rgba(255, 107, 1, 0.6);
 
   cursor: pointer;
-
-  &.btn-active {
-    background-color: $btn-accent-color;
-    border-color: $btn-accent-color;
-  }
 }
 
 .header-button {
@@ -54,4 +49,10 @@
 
 .active {
   background-color: $btn-accent-color;
+}
+
+.btn-active {
+  background-color: $btn-accent-color;
+  border-color: $btn-accent-color;
+  color: $white-color;
 }
