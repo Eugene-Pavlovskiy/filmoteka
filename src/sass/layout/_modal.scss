@@ -90,8 +90,12 @@
   cursor: pointer;
   &:hover,
   &:focus {
-    background: #ff6b01;
+    background-color: #ff6b01;
   }
+
+  background-image: url('../images/close.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
 }
 
 .modal-icon {
