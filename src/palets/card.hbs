@@ -126,7 +126,7 @@
   <span class="card-thumb__info">{{genresMin}} | {{release_date}} {{score}}</span>
 </li> --}}
 
-<li class="gallery__item">
+<li class="gallery__item" data-index="{{index}}">
 
 
   <div class="card-thumb">
@@ -168,8 +168,10 @@
     </div>
   </div>
    </div>
-  <span class="card-thumb__title">{{title}}</span>
+  <div class="card-bottom">
+    <span class="card-thumb__title">{{title}}</span>
   <span class="card-thumb__info">{{genresMin}} | {{release_date}} {{score}}</span>
+  </div>
   </div>
 </li>
 

@@ -1,5 +1,3 @@
-// import getRefs from './js/components/refs';
-// import { getAllGenres, fetchTrendingMovies } from './api';
 import { appendMarkUp } from './mark-up';
 
 function updateGallery(e, callBack) {
@@ -17,7 +15,9 @@ function updateGallery(e, callBack) {
     sessionStorage.setItem('pageCounter', pageCounter);
 
     appendMarkUp(callBack);
-    window.scrollTo(0, 0);
+
+    setTimeout(scrollUp, 350);
+
     return;
   }
 
@@ -26,7 +26,9 @@ function updateGallery(e, callBack) {
     sessionStorage.setItem('pageCounter', pageCounter);
 
     appendMarkUp(callBack);
-    window.scrollTo(0, 0);
+
+    setTimeout(scrollUp, 350);
+
     return;
   }
 
@@ -35,14 +37,18 @@ function updateGallery(e, callBack) {
     sessionStorage.setItem('pageCounter', pageCounter);
 
     appendMarkUp(callBack);
-    window.scrollTo(0, 0);
+
+    setTimeout(scrollUp, 350);
+
     return;
   }
+}
 
-  // window.scrollTo({
-  //   top: 0,
-  //   behavior: 'smooth',
-  // });
+function scrollUp() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 }
 
 export { updateGallery };

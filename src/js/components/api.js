@@ -24,8 +24,6 @@ async function fetchTrendingMovies(pageNum) {
 
   const parsedRespons = await firstRespons.json();
 
-  // totalPages = parsedRespons.total_pages;
-
   sessionStorage.setItem('totalPages', parsedRespons.total_pages);
 
   // с сервера приходит объект запроса, массив с фильмами в свойстве result
@@ -48,6 +46,10 @@ async function fetchMovies(query) {
 function getWatchedMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
 
+  if (!movies) {
+    return;
+  }
+
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
 
   const res = movies.splice((pageNum - 1) * 20, 20);
@@ -57,6 +59,10 @@ function getWatchedMovies(pageNum) {
 
 function getQueueMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+
+  if (!movies) {
+    return;
+  }
 
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
 

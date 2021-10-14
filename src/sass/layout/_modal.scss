@@ -1,6 +1,6 @@
 .backdrop {
   position: fixed;
-  overflow-y: scroll;
+  overflow-y: auto;
   z-index: 999;
   top: 0;
   right: 0;
@@ -29,6 +29,11 @@
 }
 
 .modal {
+  // display: flex;
+  // padding: 50px 30px;
+
+  padding: 48px 20px;
+
   position: absolute;
   top: 20px;
   left: 50%;
@@ -37,13 +42,19 @@
   transform: translate(-50%, 0);
   transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  box-shadow: 0px 8px 8px rgba(255, 107, 1, 0.6);
+  // box-shadow: 0px 8px 8px rgba(255, 107, 1, 0.6);
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @media screen and (min-width: 768px) {
+    padding: 48px 30px;
+    display: flex;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 50px 30px;
   }
 }
 
@@ -76,6 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   &:hover,
   &:focus {
     background: #ff6b01;
@@ -86,7 +98,7 @@
   width: 30px;
   height: 30px;
 
-  cursor: pointer;
+  pointer-events: none;
 
   border-radius: 50%;
 
@@ -157,11 +169,11 @@
       margin-right: 15px;
     }
 
-    &:last-child {
-      margin-top: 15px;
-      width: 280px;
-      margin-top: 15px;
-    }
+    // &:last-child {
+    //   margin-top: 15px;
+    //   width: 280px;
+    //   margin-top: 15px;
+    // }
   }
 
   @media screen and (min-width: 768px) {
@@ -172,11 +184,11 @@
       margin-right: 15px;
     }
 
-    &:last-child {
-      margin-top: 15px;
-      width: 264px;
-      margin-top: 15px;
-    }
+    // &:last-child {
+    //   margin-top: 15px;
+    //   width: 264px;
+    //   margin-top: 15px;
+    // }
 
     @media screen and (min-width: 1024px) {
       width: 122px;
@@ -186,10 +198,10 @@
         margin-right: 15px;
       }
 
-      &:last-child {
-        width: 122px;
-        margin-top: 0;
-      }
+      // &:last-child {
+      //   width: 122px;
+      //   margin-top: 0;
+      // }
     }
   }
 
@@ -200,19 +212,42 @@
   }
 }
 
+.info-container {
+  position: relative;
+}
+
 .modal-image-block {
+  width: 240px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin-left: auto;
+  // margin-right: auto;
+  margin: 0 auto 30px auto;
+  border-radius: 5px;
+
+  overflow: hidden;
   @media screen and (min-width: 768px) {
-    margin-right: 30px;
+    // margin-right: 30px;
+    margin: 0 32px 30px 0;
+    width: 264px;
+    height: 374px;
   }
 
   @media screen and (min-width: 1024px) {
-    margin-right: 32px;
+    // margin-right: 32px;
+    width: 396px;
+    height: 478px;
+    margin: 0 30px 0 0;
   }
 }
 
 .modal-film-block {
+  margin-bottom: 10px;
+
   display: flex;
-  align-items: center;
+  align-items: baseline;
 }
 
 .modal-block-description {
@@ -241,9 +276,9 @@
 }
 
 .modal-img {
-  width: 240px;
-  height: auto;
-  border-radius: 5px;
+  // width: 240px;
+  // height: auto;
+  // border-radius: 5px;
 
   @media screen and (min-width: 768px) {
     width: 264px;
@@ -266,7 +301,7 @@
 }
 
 .modal-title {
-  margin: 0;
+  margin-bottom: 20px;
   color: #000000;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
@@ -299,8 +334,12 @@
   font-size: 12px;
   line-height: 1.33;
   margin-right: 30px;
-  // width: 75px;
-  width: 69px;
+  width: 75px;
+  // width: 69px;
+
+  margin-right: 69px;
+  width: 75px;
+  flex-shrink: 0;
 }
 
 .info-list-description {
@@ -333,11 +372,11 @@
   margin-right: 4px;
   text-align: center;
   text-transform: uppercase;
-  background: #ff6b01;
+  // background: #ff6b01;
   border-radius: 5px;
   min-width: 36px;
   height: 16px;
-  color: #ffffff;
+  // color: #ffffff;
 }
 
 .info-list-rating--slash {
@@ -394,11 +433,16 @@
   font-size: 12px;
   line-height: 1.33em;
   color: #000000;
-  margin-top: 0%;
+  // margin-top: 0%;
   margin-top: 20px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 .modal-about-text {
+  // font-family: Roboto;
+  // font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
   line-height: 1.67;
 
   @media screen and (min-width: 768px) {
@@ -411,6 +455,10 @@
 }
 
 .votes {
+  // &:not(:last-child) {
+  //   margin-left: auto;
+  // }
+
   display: inline-flex;
   align-items: center;
   justify-content: center;

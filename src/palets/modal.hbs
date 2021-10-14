@@ -1,83 +1,57 @@
-<!--{{#if poster_path}}
-<img class="modal-img" src='https://image.tmdb.org/t/p/original/{{poster_path}}' alt="{{title}}">
-{{else}}
-<img class="modal-img" src='https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg' alt="{{title}}">
-{{/if}}
+<button class="modal-close" data-action="close-modal">
+      <svg class="modal-icon">
+        <use href="./images/sprite.svg#close"></use>
+      </svg>
+    </button>
 
-<div class="modal-description">
-    <h2 class="modal-title">{{title}}</h2>
-    <ul class="modal-info-list">
-        <li class="info-list-item">
-            <h3 class="info-list-title">Vote / Votes</h3>
-            <span class="info-list-rating">{{vote_average}}</span>
-            <span class="info-list-rating--slash">/</span>
-            <p class="info-list-rating info-list-rating--white">{{vote_count}}</p>
-        </li>
-        <li class="info-list-item">
-            <h3 class="info-list-title">Popularity</h3>
-            <p class="info-list-description">{{popularity}}</p>
-        </li>
-        <li class="info-list-item">
-            <h3 class="info-list-title">Original Title</h3>
-            <p class="info-list-description--title">{{original_title}}</p>
-        </li>
-        <li class="info-list-item">
-            <h3 class="info-list-title">Genre</h3>
-            <p class="info-list-description">{{#each genres}}<span class="description-genre--name">{{this.name}}
-                </span>{{/each}}</p>
-        </li>
-    </ul>
-    <h3 class="modal-about">About</h3>
-    <p class="about-text">{{overview}}</p>
-    <ul class="modal-btn-list">
-        {{#if b}}
-        <li class="btn-list-item"><button data-name="add-watched" class="btn-watched">add to watched</button></li>
-        {{else}}
-        <li class="btn-list-item"><button data-name="add-watched" class="btn-watched">remuve to watched</button></li>
-        {{/if}}
-        {{#if a}}
-        <li class="btn-list-item"><button data-name="add-queue" class="btn-watched btn-queue">add to queue</button>
-        </li>
-        {{else}}
-        <li class="btn-list-item"><button data-name="add-queue" class="btn-watched btn-queue">remuve to
-                queue</button></li>
-        {{/if}}
-    </ul>
-</div> -->
-
-<div class="modal-image-block">
-    <img class="modal-img" src="{{poster_path}}" alt="{{title}}">
+<div class='modal-image-block'>
+  <img
+    class='modal-img'
+    src='https://image.tmdb.org/t/p/w780{{poster_path}}'
+    alt='poster of {{title}}'
+  />
 </div>
-<div>
-    <h2 class="modal-title">{{title}}</h2>
-    <div>
-        <div class="modal-film-block">
-            <span class="info-list-title" id="title">Vote / Votes</span>
-            <span class="info-list-rating accent votes">{{vote_average}}</span>&nbsp/&nbsp
-            <span class="info-list-rating votes">{{vote_count}}</span>
-        </div>
-        <div class="modal-film-block">
-            <span class="info-list-title" id="title">Popularity</span>
-            <span class="info-list-rating">{{popularity}}</span>
-        </div>
-        <div class="modal-film-block">
-            <span class="info-list-title" id="title">Original Title</span>
-            <span class="modal-film-res uppersace">{{original_title}}</span>
-        </div>
-        <div class="modal-film-block">
-            <span class="info-list-title" id="title">Genre</span>
-            <span class="modal-film-res">{{genres}}</span>
-        </div>
+
+  <div class="info-container">
+      <h2 class='modal-title'>{{title}}</h2>
+
+    <div class='modal-film-block'>
+      <span class='info-list-title' id='title'>Vote / Votes</span>
+      <span class='info-list-rating accent votes'>{{vote_average}}</span>&nbsp/&nbsp
+      <span class='info-list-rating votes'>{{vote_count}}</span>
+    </div>
+    <div class='modal-film-block'>
+      <span class='info-list-title' id='title'>Popularity</span>
+      <span class='info-list-rating'>{{popularity}}</span>
+    </div>
+    <div class='modal-film-block'>
+      <span class='info-list-title' id='title'>Original Title</span>
+      <span class='modal-film-res uppersace'>{{original_title}}</span>
+    </div>
+    <div class='modal-film-block'>
+      <span class='info-list-title' id='title'>Genre</span>
+      {{!-- <span class='modal-film-res'>{{genres}}</span> --}}
+      <span class='modal-film-res'>{{#each genres}}{{#if @last}}{{this}}{{else}}{{this}},{{/if}} {{/each}}</span>
     </div>
 
-    <div class="modal-block-description">
-        <h3 class="modal-about">About </h3>
-        <p class="modal-about-text">{{overview}}</p>
-    </div>
+  <div class='modal-block-description'>
+    <h3 class='modal-about'>About </h3>
+    <p class='modal-about-text'>{{overview}}</p>
+  </div>
 
-    <div class="modal-buttons">
-        <button type="button" class="accent modal-button">add to watched</button>
-        <button type="button" class="modal-button">add to
-            queue</button>
-    </div>
+  <div class='modal-buttons'>
+    {{!-- <button type='button' class='accent modal-button'>add to watched</button> --}}
+    {{#if addedToWatched}}
+          <button type="button" class="modal-button btn-active" data-action="toggle-watched"  data-index="{{index}}">Remove from watched</button>
+          {{else}}
+          <button type="button" class="modal-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button>
+          {{/if}}
+    {{!-- <button type='button' class='modal-button'>add to queue</button> --}}
+    {{#if addedToQueue}}
+          <button type="button" class="modal-button btn-active" data-action="toggle-queue"  data-index="{{index}}">Remove from queue</button>
+          {{else}}
+          <button type="button" class="modal-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button>
+          {{/if}}
+  </div>
+  </div>
 </div>
