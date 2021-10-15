@@ -2,11 +2,24 @@
     </button>
 
 <div class='modal-image-block'>
-  <img
+  {{#if poster_path}}
+  <img class="modal-img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img>
+  {{else}}
+  <img class="modal-img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
+
+  {{!-- <img
     class='modal-img'
     src='https://image.tmdb.org/t/p/w780{{poster_path}}'
     alt='poster of {{title}}'
-  />
+  /> --}}
 </div>
 
   <div class="info-container">
