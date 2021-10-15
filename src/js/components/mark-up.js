@@ -195,6 +195,7 @@ function updatePaginationMenu(page, totalPages = 20) {
     markUp += arrowRight();
   }
 
+  // console.log('obnovil pag');
   refs.paginationMenu.querySelector('.pagination__container').innerHTML = markUp;
 }
 
