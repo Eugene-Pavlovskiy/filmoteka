@@ -91,12 +91,15 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $btn-accent-color;
+      // background-color: $btn-accent-color;
+      border: solid 0.5px;
+      border-color: $btn-accent-color;
       transform: scale(1.1);
     }
 
     &--current {
       background-color: $btn-accent-color;
+      color: $white-color;
       // transform: scale(1.05);
     }
 
