@@ -19,11 +19,16 @@
 }
 
 .inner-container {
-  padding: 60px 0;
+  padding: 20px 0;
   position: relative;
 
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    padding: 60px 0;
+  }
+
   // justify-content: end;
 
   // min-height: 100vh;
