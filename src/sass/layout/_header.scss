@@ -45,6 +45,7 @@
 
   &.library-open {
     background-image: $gradient, url('../images/header/mob-lib.png');
+    background-position: bottom;
 
     @media screen and (min-resolution: 2dppx) {
       background-image: $gradient, url('../images/header/mob-lib@2x.png');
@@ -62,6 +63,8 @@
       // max-width: 1600px;
 
       background-image: $gradient, url('../images/header/dsktp-lib.png');
+      background-position: bottom;
+
       @media screen and (min-resolution: 2dppx) {
         background-image: $gradient, url('../images/header/dsktp-lib@2x.png');
       }
@@ -71,6 +74,8 @@
       width: 100%;
 
       background-image: $gradient, url('../images/header/dsktp-lib.png');
+      background-position: bottom;
+
       @media screen and (min-resolution: 2dppx) {
         background-image: $gradient, url('../images/header/dsktp-lib@2x.jpg');
       }
