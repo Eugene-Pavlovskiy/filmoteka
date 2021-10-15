@@ -64,17 +64,17 @@
         <li class="card-button-list-item">
           {{!-- <button type="button" class="button poster-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button> --}}
           {{#if addedToWatched}}
-          <button type="button" class="button poster-button btn-active" data-action="toggle-watched"  data-index="{{index}}">Remove from watched</button>
+          <button type="button" class="button poster-button btn-active" data-action="toggle-watched"  data-index="{{index}}" data-id="{{id}}">Remove from watched</button>
           {{else}}
-          <button type="button" class="button poster-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button>
+          <button type="button" class="button poster-button" data-action="toggle-watched"  data-index="{{index}}" data-id="{{id}}">Add to watched</button>
           {{/if}}
         </li>
         <li class="card-button-list-item">
           {{!-- <button type="button" class="button poster-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button> --}}
           {{#if addedToQueue}}
-          <button type="button" class="button poster-button btn-active" data-action="toggle-queue"  data-index="{{index}}">Remove from queue</button>
+          <button type="button" class="button poster-button btn-active" data-action="toggle-queue"  data-index="{{index}}" data-id="{{id}}">Remove from queue</button>
           {{else}}
-          <button type="button" class="button poster-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button>
+          <button type="button" class="button poster-button" data-action="toggle-queue"  data-index="{{index}}" data-id="{{id}}">Add to queue</button>
           {{/if}}
         </li>
       </ul>

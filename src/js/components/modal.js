@@ -1,6 +1,7 @@
 import makeModal from '../../palets/modal.hbs';
 import getRefs from './refs';
 import { getButton } from './adding-to-library';
+import { updateQueueOnClick, updateWatchedOnClick, updateMainGal } from './library';
 
 const refs = getRefs();
 
@@ -13,6 +14,8 @@ function onCardClick(e) {
 
   const a = e.target.dataset.index;
 
+  sessionStorage.setItem('modalMovie', JSON.stringify(arr[a]));
+
   const modal = makeModal(arr[a]);
 
   refs.modalFilm.insertAdjacentHTML('beforeend', modal);
@@ -22,12 +25,26 @@ function onCardClick(e) {
 
   refs.backdrop.addEventListener('click', closeModal);
   refs.modalFilm.addEventListener('click', getButton);
+
+  if (refs.home.classList.contains('nav-link-current')) {
+    refs.backdrop.addEventListener('click', updateMainGal);
+    return;
+  }
+  if (refs.btnWatched.classList.contains('btn-active')) {
+    refs.backdrop.addEventListener('click', updateWatchedOnClick);
+    return;
+  }
+
+  refs.backdrop.addEventListener('click', updateQueueOnClick);
 }
 
 function closeModal(e) {
   if (e.target.dataset.action !== 'close-modal') {
     return;
   }
+
+  refs.backdrop.removeEventListener('click', updateWatchedOnClick);
+  refs.backdrop.removeEventListener('click', updateQueueOnClick);
 
   refs.modalFilm.innerHTML = '';
   refs.backdrop.classList.remove('is-open');

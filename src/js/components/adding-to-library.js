@@ -1,3 +1,5 @@
+// import { fetchOneMovie } from './api';
+
 function getButton(e) {
   posteToLibrary(e);
 }
@@ -9,16 +11,22 @@ function posteToLibrary(e) {
     return;
   }
 
-  const index = e.target.dataset.index;
+  // const index = e.target.dataset.index;
   const btn = e.target;
+  const id = Number(e.target.dataset.id);
 
   const moviesArr = JSON.parse(localStorage.getItem('currentColection'));
+  // let movie = moviesArr[index];
+  let movie = moviesArr.find(m => m.id === id);
+
+  if (!movie) {
+    movie = JSON.parse(sessionStorage.getItem('modalMovie'));
+  }
 
   if (posterClicked.dataset.action === 'toggle-watched') {
-    addToWatched(moviesArr[index], btn);
+    addToWatched(movie, btn);
   } else if (posterClicked.dataset.action === 'toggle-queue') {
-    addToQueue(moviesArr[index], btn);
-  } else {
+    addToQueue(movie, btn);
   }
 }
 
@@ -40,8 +48,7 @@ function addToWatched(movie, btn) {
 
   const indexInW = watchedMoviesArr.indexOf(includedInWatched);
   const indexInQ = queueMoviesArr.indexOf(includedInQueue);
-  const indexInC =
-    currentColection.indexOf(includedInColection) || currentColection.indexOf(includedInColection);
+  const indexInC = currentColection.indexOf(includedInColection);
 
   if (includedInWatched && includedInQueue) {
     watchedMoviesArr.splice(indexInW, 1);
@@ -67,7 +74,9 @@ function addToWatched(movie, btn) {
     btn.classList.add('btn-active');
     btn.textContent = 'Remove from watched';
     movie.addedToWatched = true;
-    currentColection[indexInC].addedToWatched = true;
+    if (currentColection[indexInC]) {
+      currentColection[indexInC].addedToWatched = true;
+    }
     watchedMoviesArr.push(movie);
   }
 
@@ -98,8 +107,7 @@ function addToQueue(movie, btn) {
 
   const indexInQ = queueMoviesArr.indexOf(includedInQueue);
   const indexInW = watchedMoviesArr.indexOf(includedInWatched);
-  const indexInC =
-    currentColection.indexOf(includedInColection) || currentColection.indexOf(includedInColection);
+  const indexInC = currentColection.indexOf(includedInColection);
 
   if (includedInQueue && includedInWatched) {
     queueMoviesArr.splice(indexInQ, 1);
@@ -125,7 +133,10 @@ function addToQueue(movie, btn) {
     btn.classList.add('btn-active');
     btn.textContent = 'Remove from queue';
     movie.addedToQueue = true;
-    currentColection[indexInC].addedToQueue = true;
+    if (currentColection[indexInC]) {
+      currentColection[indexInC].addedToQueue = true;
+    }
+    // currentColection[indexInC].addedToQueue = true;
     queueMoviesArr.push(movie);
   }
 

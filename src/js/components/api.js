@@ -47,7 +47,7 @@ function getWatchedMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
 
   if (!movies) {
-    return;
+    return 0;
   }
 
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
@@ -61,7 +61,7 @@ function getQueueMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
 
   if (!movies) {
-    return;
+    return 0;
   }
 
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
@@ -71,6 +71,25 @@ function getQueueMovies(pageNum) {
   return res;
 }
 
-export { getAllGenres, fetchTrendingMovies, fetchMovies, getWatchedMovies, getQueueMovies };
+function getCurrentColection(pageNum) {
+  const movies = JSON.parse(localStorage.getItem('currentColection'));
 
-// asd
+  if (!movies) {
+    return 0;
+  }
+
+  sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
+
+  const res = movies.splice((pageNum - 1) * 20, 20);
+
+  return res;
+}
+
+export {
+  getAllGenres,
+  fetchTrendingMovies,
+  fetchMovies,
+  getWatchedMovies,
+  getQueueMovies,
+  getCurrentColection,
+};

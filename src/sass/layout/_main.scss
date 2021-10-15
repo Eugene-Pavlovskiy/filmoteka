@@ -108,7 +108,7 @@
   // animation-duration: 1000ms;
   // animation-name: append;
 
-  animation: append 600ms linear;
+  // animation: append 600ms linear;
 
   // animation: name duration timing-function delay iteration-count direction fill-mode;
 }
@@ -152,7 +152,7 @@
   // animation-duration: 1000ms;
   // animation-name: append;
 
-  animation: append 600ms linear;
+  // animation: append 600ms linear;
 }
 
 // animation: append 5s linear;
@@ -183,6 +183,10 @@
     letter-spacing: 2.4px;
     color: #adadad;
   }
+}
+
+.animation {
+  animation: append 600ms linear;
 }
 
 @keyframes append {

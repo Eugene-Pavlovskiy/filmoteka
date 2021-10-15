@@ -105,6 +105,7 @@
     transition-property: background-color, transform;
     @extend %transition;
   }
+
   &__container {
     display: flex;
   }
@@ -113,6 +114,15 @@
   //   width: 30px;
   //   height: 30px;
   // }
+}
+
+.first,
+.last {
+  display: none;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+  }
 }
 
 .dots {
@@ -126,9 +136,13 @@
   font-size: 12px;
   line-height: 1.33;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+  }
 }
 
 .pagination__arrow-logo {

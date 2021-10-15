@@ -1,12 +1,16 @@
 import getRefs from './refs';
-import { getWatchedMovies, getQueueMovies } from './api';
+import { getWatchedMovies, getQueueMovies, getCurrentColection } from './api';
 
 const refs = getRefs();
 
 let moviesArr = null;
 
 async function getMovies(callBack, page) {
-  if (callBack === getWatchedMovies || callBack === getQueueMovies) {
+  if (
+    callBack === getWatchedMovies ||
+    callBack === getQueueMovies ||
+    callBack === getCurrentColection
+  ) {
     const m = callBack(page);
     for (let i = 0; i < m.length; i++) {
       m[i].index = i;
@@ -99,6 +103,8 @@ async function getMovies(callBack, page) {
   saveGallery(res);
   return formatedMovies;
 }
+
+function getOneMovie() {}
 
 function chek(moviesArr) {
   let watchedMoviesArr = JSON.parse(localStorage.getItem('moviesInWatched'));
