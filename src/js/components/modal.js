@@ -25,6 +25,7 @@ function onCardClick(e) {
 
   refs.backdrop.addEventListener('click', closeModal);
   refs.modalFilm.addEventListener('click', getButton);
+  document.addEventListener('keydown', closeModal);
 
   if (refs.home.classList.contains('nav-link-current')) {
     refs.backdrop.addEventListener('click', updateMainGal);
@@ -39,7 +40,7 @@ function onCardClick(e) {
 }
 
 function closeModal(e) {
-  if (e.target.dataset.action !== 'close-modal') {
+  if (e.target.dataset.action !== 'close-modal' && e.key !== 'Escape') {
     return;
   }
 
@@ -51,6 +52,7 @@ function closeModal(e) {
   document.body.classList.remove('backdrop-scroll');
   refs.backdrop.removeEventListener('click', closeModal);
   refs.modalFilm.removeEventListener('click', getButton);
+  document.removeEventListener('keydown', closeModal);
 }
 
 export { onCardClick, closeModal };

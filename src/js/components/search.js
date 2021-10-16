@@ -3,6 +3,7 @@ import getRefs from './refs';
 import { fetchTrendingMovies, fetchMovies } from './api';
 import { updateGallery } from './updateGallery';
 import { appendMarkUp } from './mark-up';
+import { libPagQueue, libPagWatched } from './library';
 
 const refs = getRefs();
 
@@ -12,12 +13,16 @@ function trendingPagination(e) {
   updateGallery(e, fetchTrendingMovies);
 }
 
+let forListenerRemoval = null;
+
 function onHomeClick() {
   refs.searchInput.value = '';
   sessionStorage.setItem('pageCounter', 1);
   appendMarkUp(fetchTrendingMovies);
 
-  refs.paginationMenu.removeEventListener('click', forListenerRemoval);
+  // refs.paginationMenu.removeEventListener('click', forListenerRemoval);
+  refs.paginationMenu.removeEventListener('click', libPagQueue);
+  refs.paginationMenu.removeEventListener('click', libPagWatched);
   refs.paginationMenu.addEventListener('click', trendingPagination);
 
   refs.form.removeEventListener('input', onFormInputDebounce);
@@ -25,8 +30,6 @@ function onHomeClick() {
 
   refs.home.disbled = true;
 }
-
-let forListenerRemoval = null;
 
 // логика отрисовки фильмов по запросу, не закончена
 // TODO: если не нашлись фильмы нужно выводить сообщение о ненахождении
