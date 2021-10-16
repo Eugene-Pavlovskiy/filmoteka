@@ -35,6 +35,7 @@ function navToHome(e) {
 
 function navToLibrary(e) {
   refs.paginationMenu.removeEventListener('click', trendingPagination);
+  refs.error.innerHTML = '';
   e.preventDefault();
   refs.library.classList.add('nav-link-current');
   refs.home.classList.remove('nav-link-current');
