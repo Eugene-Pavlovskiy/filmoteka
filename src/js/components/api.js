@@ -1,6 +1,7 @@
 // функции для работы с API
 
 const KEY = '94f703750c3e0771d8c2babc592efc94';
+const URL = `https://api.themoviedb.org/3/`;
 
 // добавляет в локальное хранилище массив всех возможных жанров который будет использоваться для формирования списка жанров фильма
 async function getAllGenres() {
@@ -16,11 +17,35 @@ async function getAllGenres() {
   localStorage.setItem('genres', JSON.stringify(genres.genres));
 }
 
+// получаем ID детских жанров
+const allGenres = localStorage.getItem('genres');
+const kidsGenres = JSON.parse(allGenres).filter(
+  genre => genre.name === 'Family' || genre.name === 'Animation',
+);
+const kidsGenresIDs = kidsGenres.map(g => g.id);
+
+// определяем режим поиска
+let searchOpts = `trending/movie/week`;
+let searchOpts2 = ``;
+function checkKidsMode() {
+  const kidsMode = localStorage.getItem('theme');
+  if (kidsMode === 'kids-theme') {
+    searchOpts = `discover/movie`;
+    searchOpts2 = `&with_genres=${kidsGenresIDs[0]}&with_genres=${kidsGenresIDs[1]}&sort_by=popularity.desc`;
+  } else {
+    searchOpts = `trending/movie/week`;
+    searchOpts2 = ``;
+  }
+}
+checkKidsMode();
+
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
 async function fetchTrendingMovies(pageNum) {
   const firstRespons = await fetch(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=${pageNum}`,
+    `${URL}${searchOpts}?api_key=${KEY}${searchOpts2}&page=${pageNum}`,
   );
+  // `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=${pageNum}`,
+  // `discover/movie?api_key=${KEY}&with_genres=${kidsGenresIDs[0]}&with_genres=${kidsGenresIDs[1]}&sort_by=popularity.desc&page=${pageNum}`;
 
   const parsedRespons = await firstRespons.json();
 
