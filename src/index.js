@@ -4,7 +4,7 @@ import { getAllGenres, fetchTrendingMovies } from './js/components/api';
 import { appendMarkUp } from './js/components/mark-up';
 import './js/components/nav';
 import './js/components/footer-modal';
-
+import './js/components/footer-slider-btn';
 import './js/components/btn-to-top';
 
 getAllGenres();
