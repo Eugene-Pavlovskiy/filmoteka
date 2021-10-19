@@ -1,4 +1,5 @@
-/* mobile*/
+/* Mobile S - 320px */
+/* Footer Btn */
 #myBtn {
   color: #545454;
   padding: 0;
@@ -10,11 +11,12 @@
   text-decoration: underline;
 }
 
+/* Footer modal */
 .footer__modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 50px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -26,13 +28,13 @@
 
 .footer__modal-body {
     padding: 0;
-    margin: 5px 0;
+    margin: 0;
 }
 
 .footer__autors {
     margin: 0 0 20px 0;
     width: 290px;
-    height: 50%;
+    height: 100%;
     object-fit: contain;
 
 }
@@ -47,25 +49,41 @@
     justify-content: space-around;
 }
 
-.gh-p,
-.linkedin {
-    color: #051efd;
+.footer__links-link {
+    width: 48px;
+    border-radius: 250px;
+}
+
+.footer__links-link:hover {
+    background-color: rgba(255, 107, 1, 1);
+}
+
+.footer__social {
+    width: 48px;
+    border-radius: 250px;
+}
+
+.footer__social:hover {
+    background-color: rgba(255, 107, 1, 1);
+}
+
+.footer__social:focus {
+    background-color: rgba(255, 107, 1, 1);
 }
 
 .footer__h3 {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.modal-content {
+.modal__content {
     position: relative;
     background-color: #ffffff;
     margin: auto;
     padding: 0;
-    border: 1px solid #000000;
-    width: 280px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    width: 290px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.6);
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
@@ -85,8 +103,6 @@
 
 
 .close {
-    // position: absolute;
-    // padding-left: 20px;
     padding-top: 7px;
     float: right;
     color: rgb(2, 2, 2);
@@ -96,7 +112,7 @@
 
 .close:hover,
 .close:focus {
-    color: #000;
+    color: rgb(255, 107, 1,);
     text-decoration: none;
     cursor: pointer;
 }
@@ -106,8 +122,15 @@ hr {
     border-radius: 6px;
     background-color: rgba(255, 107, 1, 0.6); /* Цвет линии */
     color: rgba(255, 107, 1, 0.6); /* Цвет линии для IE6-7 */
-    height: 3px; /* Толщина линии */
-    width: 160px;
+    height: 1px; /* Толщина линии */
+    width: 80%;
+}
+
+hr:hover {
+    background-color: rgba(0, 0, 0,);
+    color: rgba(255, 107, 1, 0.6);
+    box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6),
+    0 6px 20px 0 rgba(250, 107, 1, 0.5);
 }
 
 .modal-header {
@@ -117,18 +140,66 @@ hr {
 }
 
 .modal-body {
-    padding: 20px 10px;
+    padding: 0px;
 }
 
-/* tablet*/
+.slider {
+    width: 290px;
+    height: 580px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider-line {
+    position: relative;
+    display: flex;
+    height: 80%;
+    width: 1740px;
+    margin-left: 0;
+    transition: all ease 1s;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+.slider-previous,
+.slider-next {
+    width: 30%;
+    height: 32px;
+    border: none;
+    border-radius: 250px;
+    background-color: #000;
+    color: #ffffff;
+    box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6),
+    0 6px 20px 0 rgba(250, 107, 1, 0.5);
+
+}
+
+.slider-previous:hover,
+.slider-next:hover {
+    background-color: rgba(255, 107, 1, 1);
+    color: #000000;
+}
+
+.slider-previous:focus,
+.slider-next:focus {
+    background-color: rgba(255, 107, 1, 1);
+    color: #000000;
+}
+
+/* Tablet & Desktop min - 768px */
 @media screen and (min-width: 768px) {
-    .modal-content {
+    .modal__content {
         position: relative;
         background-color: #ffffff;
         margin: auto;
         padding: 0;
-        border: 1px solid #000000;
-        width: 618px;
+        width: 425px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 0.4s;
@@ -136,42 +207,36 @@ hr {
         animation-duration: 0.4s
     }
 
-    .modal-body {
-        display: flex;
-        justify-content: space-evenly;
-        padding: 20px 10px;
-    }
-
-    .footer__modal-info {
-        display: block;
-        width: 50%;
-        margin-top: 30px;
-    }
-}
-
-/* desktop*/
-@media screen and (min-width: 1024px) {
-    .modal-content {
-        position: relative;
+    .modal-header {
+        padding: 0 10px;
         background-color: #ffffff;
-        margin: auto;
-        padding: 0;
-        border: 1px solid #000000;
-        width: 882px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
+        color: white;
     }
 
     .modal-body {
+        text-align: center;
+        padding: 0px;
+    }
+
+    .modal-footer {
         display: flex;
         justify-content: space-evenly;
-        padding: 20px 10px;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 30px;
     }
 
     .footer__modal-info {
         display: block;
+        margin-top: 0px;
+    }
+
+    .slider-line {
+        position: relative;
+        display: flex;
+        height: 80%;
+        width: 1740px;
+        margin-left: 13px;
+        transition: all ease 1s;
     }
 }
