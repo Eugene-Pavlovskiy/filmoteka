@@ -13,230 +13,237 @@
 
 /* Footer modal */
 .footer__modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 50px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.25); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.25); /* Black w/ opacity */
 }
 
 .footer__modal-body {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .footer__autors {
-    margin: 0 0 20px 0;
-    width: 290px;
-    height: 100%;
-    object-fit: contain;
-
+  margin: 0 0 20px 0;
+  width: 290px;
+  height: 100%;
+  object-fit: contain;
 }
 
 .footer__modal-info {
-    display: block;
-    margin: 0;
+  display: block;
+  margin: 0;
 }
 
 .footer__links {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .footer__links-link {
-    width: 48px;
-    border-radius: 250px;
+  width: 48px;
+  border-radius: 250px;
 }
 
 .footer__links-link:hover {
-    background-color: rgba(255, 107, 1, 1);
+  background-color: rgba(255, 107, 1, 1);
 }
 
 .footer__social {
-    width: 48px;
-    border-radius: 250px;
+  width: 48px;
+  border-radius: 250px;
 }
 
 .footer__social:hover {
-    background-color: rgba(255, 107, 1, 1);
+  background-color: rgba(255, 107, 1, 1);
 }
 
 .footer__social:focus {
-    background-color: rgba(255, 107, 1, 1);
+  background-color: rgba(255, 107, 1, 1);
 }
 
 .footer__h3 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .modal__content {
-    position: relative;
-    background-color: #ffffff;
-    margin: auto;
-    padding: 0;
-    width: 290px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4),0 6px 20px 0 rgba(0,0,0,0.6);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
+  position: relative;
+  background-color: #ffffff;
+  margin: auto;
+  padding: 0;
+  width: 290px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.6);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
 }
 
-
 @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
-
 .close {
-    padding-top: 7px;
-    float: right;
-    color: rgb(2, 2, 2);
-    font-size: 28px;
-    font-weight: bold;
+  padding-top: 7px;
+  float: right;
+  color: rgb(2, 2, 2);
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: rgb(255, 107, 1,);
-    text-decoration: none;
-    cursor: pointer;
+  color: rgb(255, 107, 1);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 hr {
-    border: none; /* Убираем границу */
-    border-radius: 6px;
-    background-color: rgba(255, 107, 1, 0.6); /* Цвет линии */
-    color: rgba(255, 107, 1, 0.6); /* Цвет линии для IE6-7 */
-    height: 1px; /* Толщина линии */
-    width: 80%;
+  border: none; /* Убираем границу */
+  border-radius: 6px;
+  background-color: rgba(255, 107, 1, 0.6); /* Цвет линии */
+  color: rgba(255, 107, 1, 0.6); /* Цвет линии для IE6-7 */
+  height: 1px; /* Толщина линии */
+  width: 80%;
 }
 
 hr:hover {
-    background-color: rgba(0, 0, 0,);
-    color: rgba(255, 107, 1, 0.6);
-    box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6),
-    0 6px 20px 0 rgba(250, 107, 1, 0.5);
+  background-color: rgba(0, 0, 0);
+  color: rgba(255, 107, 1, 0.6);
+  box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6), 0 6px 20px 0 rgba(250, 107, 1, 0.5);
 }
 
 .modal-header {
-    padding: 0 10px;
-    background-color: #ffffff;
-    color: white;
+  padding: 0 10px;
+  background-color: #ffffff;
+  color: white;
 }
 
 .modal-body {
-    padding: 0px;
+  padding: 0px;
 }
 
 .slider {
-    width: 290px;
-    height: 580px;
-    margin: auto;
-    overflow: hidden;
+  width: 290px;
+  height: 580px;
+  margin: auto;
+  overflow: hidden;
 }
 
 .slider-line {
-    position: relative;
-    display: flex;
-    height: 80%;
-    width: 1740px;
-    margin-left: 0;
-    transition: all ease 1s;
+  position: relative;
+  display: flex;
+  height: 80%;
+  width: 1740px;
+  margin-left: 0;
+  transition: all ease 1s;
 }
 
 .modal-footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
 }
 
 .slider-previous,
 .slider-next {
-    width: 30%;
-    height: 32px;
-    border: none;
-    border-radius: 250px;
-    background-color: #000;
-    color: #ffffff;
-    box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6),
-    0 6px 20px 0 rgba(250, 107, 1, 0.5);
-
+  width: 30%;
+  height: 32px;
+  border: none;
+  border-radius: 250px;
+  background-color: #000;
+  color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(255, 107, 1, 0.6), 0 6px 20px 0 rgba(250, 107, 1, 0.5);
 }
 
 .slider-previous:hover,
 .slider-next:hover {
-    background-color: rgba(255, 107, 1, 1);
-    color: #000000;
+  background-color: rgba(255, 107, 1, 1);
+  color: #000000;
+  cursor: pointer;
 }
 
 .slider-previous:focus,
 .slider-next:focus {
-    background-color: rgba(255, 107, 1, 1);
-    color: #000000;
+  background-color: rgba(255, 107, 1, 1);
+  color: #000000;
 }
 
 /* Tablet & Desktop min - 768px */
 @media screen and (min-width: 768px) {
-    .modal__content {
-        position: relative;
-        background-color: #ffffff;
-        margin: auto;
-        padding: 0;
-        width: 425px;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-        -webkit-animation-name: animatetop;
-        -webkit-animation-duration: 0.4s;
-        animation-name: animatetop;
-        animation-duration: 0.4s
-    }
+  .modal__content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    width: 425px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+  }
 
-    .modal-header {
-        padding: 0 10px;
-        background-color: #ffffff;
-        color: white;
-    }
+  .modal-header {
+    padding: 0 10px;
+    background-color: #ffffff;
+    color: white;
+  }
 
-    .modal-body {
-        text-align: center;
-        padding: 0px;
-    }
+  .modal-body {
+    text-align: center;
+    padding: 0px;
+  }
 
-    .modal-footer {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding-top: 10px;
-        padding-bottom: 30px;
-    }
+  .modal-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
 
-    .footer__modal-info {
-        display: block;
-        margin-top: 0px;
-    }
+  .footer__modal-info {
+    display: block;
+    margin-top: 0px;
+  }
 
-    .slider-line {
-        position: relative;
-        display: flex;
-        height: 80%;
-        width: 1740px;
-        margin-left: 13px;
-        transition: all ease 1s;
-    }
+  .slider-line {
+    position: relative;
+    display: flex;
+    height: 80%;
+    width: 1740px;
+    margin-left: 13px;
+    transition: all ease 1s;
+  }
 }
