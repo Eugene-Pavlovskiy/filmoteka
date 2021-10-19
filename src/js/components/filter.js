@@ -1,4 +1,7 @@
-import { updateMainGal } from './updateGallery';
+import { clearGallery } from './mark-up';
+import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
+import { loadWatched, loadQueue, updateWatchedOnClick, updateQueueOnClick } from './library';
+import { checkKidsMode } from './api';
 
 console.log(JSON.parse(localStorage.getItem('currentColection')));
 
@@ -20,6 +23,8 @@ function switchTheme(e) {
   } else {
     replaceTheme(Theme.KIDS, Theme.ADULT);
   }
+
+  onHomeClick();
 }
 
 function replaceTheme(oldTheme, newTheme) {
