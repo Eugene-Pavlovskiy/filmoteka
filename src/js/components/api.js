@@ -10,7 +10,7 @@ async function getAllGenres() {
   const respons = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`,
   );
-
+    
   const genres = await respons.json();
 
   localStorage.setItem('genres', JSON.stringify(genres.genres));
@@ -25,7 +25,6 @@ async function fetchTrendingMovies(pageNum) {
   const parsedRespons = await firstRespons.json();
 
   sessionStorage.setItem('totalPages', parsedRespons.total_pages);
-    
   // с сервера приходит объект запроса, массив с фильмами в свойстве result
   return parsedRespons.results;
 }
@@ -71,6 +70,6 @@ function getQueueMovies(pageNum) {
   return res;
 }
 
-export { getAllGenres, fetchTrendingMovies, fetchMovies, getWatchedMovies, getQueueMovies };
+export { getAllGenres, fetchTrendingMovies, fetchMovies, getWatchedMovies, getQueueMovies};
 
 // asd

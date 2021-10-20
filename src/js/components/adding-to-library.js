@@ -1,5 +1,8 @@
+import { openVideo, closeVideo } from "./trailers-modal";
 function getButton(e) {
   posteToLibrary(e);
+  openVideo(e)
+  closeVideo(e)
 }
 
 function posteToLibrary(e) {
