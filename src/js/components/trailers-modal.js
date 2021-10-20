@@ -1,5 +1,6 @@
 import getRefs from "./refs";
 import videoTpl from '../../palets/video-modal.hbs'
+import notFoundTpl from '../../palets/video-not-found.hbs'
 const KEY = '94f703750c3e0771d8c2babc592efc94';
 const refs = getRefs();
 
@@ -56,10 +57,12 @@ async function fetchVideos(index) {
     refs.videoCont.insertAdjacentHTML('beforeend', videoMarkUp);
     }
     else {
-  
+      refs.videoCont.insertAdjacentHTML('beforeend', notFoundTpl(index));
     }
+    console.log(response)
     return response
   })
+  
   }
   function closeVideo(e) {
 

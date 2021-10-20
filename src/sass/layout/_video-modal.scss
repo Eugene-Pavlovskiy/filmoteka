@@ -70,3 +70,57 @@
     .display-btn {
       display: none;
     }
+    .video-not-found_text {
+      position: absolute;
+      top: 50%;
+      background-color: black;
+      justify-self: center;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 2.4px;
+      color: #adadad;
+      text-align: center;
+      padding-left: 5px;
+      padding-right: 5px;
+
+      @media screen and (min-width: 768px) {
+        width: 264px;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 2.4px;
+
+      }
+    
+      @media screen and (min-width: 1024px) {
+        width: 396px;
+          font-size: 42px;
+          font-weight: 700;
+          letter-spacing: 2.4px;
+      }
+    }
+
+    .video-not-found_content {
+      display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+      width: 240px;
+  height: auto;
+
+  justify-content: center;
+  align-items: center;
+
+  margin: 0 auto 30px auto;
+  border-radius: 5px;
+
+  overflow: hidden;
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    height: 374px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 396px;
+    height: 478px;
+  }
+    }
