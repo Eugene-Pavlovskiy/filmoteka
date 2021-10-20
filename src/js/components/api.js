@@ -25,9 +25,10 @@ const kidsGenres = JSON.parse(allGenres).filter(
 const kidsGenresIDs = kidsGenres.map(g => g.id);
 
 // определяем режим поиска
+// checkKidsMode();
 let searchOpts = `trending/movie/week`;
 let searchOpts2 = ``;
-function checkKidsMode() {
+async function checkKidsMode() {
   const kidsMode = localStorage.getItem('theme');
   if (kidsMode === 'kids-theme') {
     searchOpts = `discover/movie`;
@@ -37,10 +38,10 @@ function checkKidsMode() {
     searchOpts2 = ``;
   }
 }
-checkKidsMode();
 
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
 async function fetchTrendingMovies(pageNum) {
+  checkKidsMode();
   const firstRespons = await fetch(
     `${URL}${searchOpts}?api_key=${KEY}${searchOpts2}&page=${pageNum}`,
   );
@@ -117,4 +118,5 @@ export {
   getWatchedMovies,
   getQueueMovies,
   getCurrentColection,
+  checkKidsMode,
 };

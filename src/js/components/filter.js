@@ -23,8 +23,9 @@ function switchTheme(e) {
   } else {
     replaceTheme(Theme.KIDS, Theme.ADULT);
   }
-
+  e.preventDefault();
   onHomeClick();
+  checkKidsMode();
 }
 
 function replaceTheme(oldTheme, newTheme) {
