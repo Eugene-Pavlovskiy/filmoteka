@@ -23,6 +23,7 @@ const kidsGenres = JSON.parse(allGenres).filter(
   genre => genre.name === 'Family' || genre.name === 'Animation',
 );
 const kidsGenresIDs = kidsGenres.map(g => g.id);
+console.log(kidsGenresIDs);
 
 // Функции для детского режима
 
@@ -70,8 +71,16 @@ async function fetchTrendingMovies(pageNum) {
 async function fetchMovies(query) {
   return async function (page) {
     const respons = await fetch(`${URL}search/movie?api_key=${KEY}&query=${query}&page=${page}`);
-
     const movies = await respons.json();
+
+    console.log(movies.results);
+    // let movies = await respons.json();
+    // const kidsMode = localStorage.getItem('theme');
+    // if (kidsMode === 'kids-theme') {
+    //   return (movies = await respons
+    //     .json()
+    //     .filter(film => film.genres.includes('Family' || 'Animation')));
+    // }
 
     sessionStorage.setItem('totalPages', movies.total_pages);
     return movies.results;
