@@ -83,3 +83,5 @@ function showQueue() {
   // сюда подключить очередь просмотра
   loadQueue();
 }
+
+export { showWatched, showQueue };

@@ -24,10 +24,11 @@ const kidsGenres = JSON.parse(allGenres).filter(
 );
 const kidsGenresIDs = kidsGenres.map(g => g.id);
 
-// определяем режим поиска
-// checkKidsMode();
+// Функции для детского режима
+
 let searchOpts = `trending/movie/week`;
 let searchOpts2 = ``;
+
 async function checkKidsMode() {
   const kidsMode = localStorage.getItem('theme');
   if (kidsMode === 'kids-theme') {
@@ -37,6 +38,16 @@ async function checkKidsMode() {
     searchOpts = `trending/movie/week`;
     searchOpts2 = ``;
   }
+}
+
+async function checkKidsLib(films) {
+  const kidsMode = localStorage.getItem('theme');
+  if (kidsMode === 'kids-theme') {
+    films = films.filter(film => film.genres.includes('Animation'));
+  } else {
+    films;
+  }
+  return films;
 }
 
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
@@ -58,9 +69,7 @@ async function fetchTrendingMovies(pageNum) {
 
 async function fetchMovies(query) {
   return async function (page) {
-    const respons = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${query}&page=${page}`,
-    );
+    const respons = await fetch(`${URL}search/movie?api_key=${KEY}&query=${query}&page=${page}`);
 
     const movies = await respons.json();
 
@@ -70,7 +79,14 @@ async function fetchMovies(query) {
 }
 
 function getWatchedMovies(pageNum) {
-  const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
+  let movies = JSON.parse(localStorage.getItem('moviesInWatched'));
+  const kidsMode = localStorage.getItem('theme');
+
+  if (kidsMode === 'kids-theme') {
+    return (movies = JSON.parse(localStorage.getItem('moviesInWatched')).filter(film =>
+      film.genres.includes('Family' || 'Animation'),
+    ));
+  }
 
   if (!movies) {
     return 0;
@@ -84,7 +100,14 @@ function getWatchedMovies(pageNum) {
 }
 
 function getQueueMovies(pageNum) {
-  const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+  let movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+  const kidsMode = localStorage.getItem('theme');
+
+  if (kidsMode === 'kids-theme') {
+    return (movies = JSON.parse(localStorage.getItem('moviesInQueue')).filter(film =>
+      film.genres.includes('Family' || 'Animation'),
+    ));
+  }
 
   if (!movies) {
     return 0;

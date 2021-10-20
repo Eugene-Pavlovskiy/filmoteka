@@ -2,6 +2,10 @@ import { clearGallery } from './mark-up';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
 import { loadWatched, loadQueue, updateWatchedOnClick, updateQueueOnClick } from './library';
 import { checkKidsMode } from './api';
+import getRefs from './refs';
+import { showWatched, showQueue } from './nav';
+
+const refs = getRefs();
 
 console.log(JSON.parse(localStorage.getItem('currentColection')));
 
@@ -24,8 +28,14 @@ function switchTheme(e) {
     replaceTheme(Theme.KIDS, Theme.ADULT);
   }
   e.preventDefault();
-  onHomeClick();
-  checkKidsMode();
+  if (refs.home.classList.contains('nav-link-current')) {
+    onHomeClick();
+    checkKidsMode();
+  } else if (refs.btnWatched.classList.contains('btn-active')) {
+    showWatched();
+  } else if (refs.btnQueue.classList.contains('btn-active')) {
+    showQueue();
+  }
 }
 
 function replaceTheme(oldTheme, newTheme) {
