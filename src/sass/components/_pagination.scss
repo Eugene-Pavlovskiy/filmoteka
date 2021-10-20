@@ -91,12 +91,15 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $btn-accent-color;
+      // background-color: $btn-accent-color;
+      border: solid 0.5px;
+      border-color: $btn-accent-color;
       transform: scale(1.1);
     }
 
     &--current {
       background-color: $btn-accent-color;
+      color: $white-color;
       // transform: scale(1.05);
     }
 
@@ -105,6 +108,7 @@
     transition-property: background-color, transform;
     @extend %transition;
   }
+
   &__container {
     display: flex;
   }
@@ -113,6 +117,15 @@
   //   width: 30px;
   //   height: 30px;
   // }
+}
+
+.first,
+.last {
+  display: none;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+  }
 }
 
 .dots {
@@ -126,9 +139,13 @@
   font-size: 12px;
   line-height: 1.33;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 500px) {
+    display: flex;
+  }
 }
 
 .pagination__arrow-logo {

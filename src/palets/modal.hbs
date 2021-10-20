@@ -2,11 +2,24 @@
     </button>
 
 <div class='modal-image-block'>
-  <img
+  {{#if poster_path}}
+  <img class="modal-img" 
+  srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 342w, https://image.tmdb.org/t/p/w500{{poster_path}} 500w, https://image.tmdb.org/t/p/w780{{poster_path}} 780w"
+  src="https://image.tmdb.org/t/p/w780{{poster_path}}"
+  alt="poster of {{title}}">
+  </img>
+  {{else}}
+  <img class="modal-img" 
+  src="https://raw.githubusercontent.com/caraset/filmoteka/main/src/images/no-poster.jpg"
+  alt="poster of {{title}}">
+  </img>
+  {{/if}}
+
+  {{!-- <img
     class='modal-img'
     src='https://image.tmdb.org/t/p/w780{{poster_path}}'
     alt='poster of {{title}}'
-  />
+  /> --}}
 </div>
 
   <div class="info-container">
@@ -39,15 +52,15 @@
   <div class='modal-buttons'>
     {{!-- <button type='button' class='accent modal-button'>add to watched</button> --}}
     {{#if addedToWatched}}
-          <button type="button" class="modal-button btn-active" data-action="toggle-watched"  data-index="{{index}}">Remove from watched</button>
+          <button type="button" class="modal-button btn-active" data-action="toggle-watched"  data-index="{{index}}" data-id="{{id}}">Remove from watched</button>
           {{else}}
-          <button type="button" class="modal-button" data-action="toggle-watched"  data-index="{{index}}">Add to watched</button>
+          <button type="button" class="modal-button" data-action="toggle-watched"  data-index="{{index}}" data-id="{{id}}">Add to watched</button>
           {{/if}}
     {{!-- <button type='button' class='modal-button'>add to queue</button> --}}
     {{#if addedToQueue}}
-          <button type="button" class="modal-button btn-active" data-action="toggle-queue"  data-index="{{index}}">Remove from queue</button>
+          <button type="button" class="modal-button btn-active" data-action="toggle-queue"  data-index="{{index}}" data-id="{{id}}">Remove from queue</button>
           {{else}}
-          <button type="button" class="modal-button" data-action="toggle-queue"  data-index="{{index}}">Add to queue</button>
+          <button type="button" class="modal-button" data-action="toggle-queue"  data-index="{{index}}" data-id="{{id}}">Add to queue</button>
           {{/if}}
           <button type="button" class="modal-button trailer-button" data-action="toggle-video"  data-index="{{index}}">Watch trailer</button>
   </div>

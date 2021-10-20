@@ -10,7 +10,7 @@ async function getAllGenres() {
   const respons = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`,
   );
-    
+
   const genres = await respons.json();
 
   localStorage.setItem('genres', JSON.stringify(genres.genres));
@@ -25,6 +25,7 @@ async function fetchTrendingMovies(pageNum) {
   const parsedRespons = await firstRespons.json();
 
   sessionStorage.setItem('totalPages', parsedRespons.total_pages);
+
   // с сервера приходит объект запроса, массив с фильмами в свойстве result
   return parsedRespons.results;
 }
@@ -46,7 +47,7 @@ function getWatchedMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
 
   if (!movies) {
-    return;
+    return 0;
   }
 
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
@@ -60,7 +61,7 @@ function getQueueMovies(pageNum) {
   const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
 
   if (!movies) {
-    return;
+    return 0;
   }
 
   sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
@@ -70,6 +71,25 @@ function getQueueMovies(pageNum) {
   return res;
 }
 
-export { getAllGenres, fetchTrendingMovies, fetchMovies, getWatchedMovies, getQueueMovies};
+function getCurrentColection(pageNum) {
+  const movies = JSON.parse(localStorage.getItem('currentColection'));
 
-// asd
+  if (!movies) {
+    return 0;
+  }
+
+  // sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
+
+  // const res = movies.splice((pageNum - 1) * 20, 20);
+
+  return movies;
+}
+
+export {
+  getAllGenres,
+  fetchTrendingMovies,
+  fetchMovies,
+  getWatchedMovies,
+  getQueueMovies,
+  getCurrentColection,
+};

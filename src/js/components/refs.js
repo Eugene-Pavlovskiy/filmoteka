@@ -4,7 +4,7 @@ export default function getRefs() {
     error: document.querySelector('.error'),
     errorText: document.querySelector('.error-text'),
     searchInput: document.querySelector('.search-input'),
-    galleryTrending: document.querySelector('.gallery-trending__list'),
+    galleryTrending: document.querySelector('.gallery-container'),
     innerContainer: document.querySelector('.inner-container'),
     notFoundContainer: document.querySelector('.not-found-container'),
     paginationContainer: document.querySelector('.pagination-container'),

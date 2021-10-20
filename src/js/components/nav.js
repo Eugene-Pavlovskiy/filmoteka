@@ -1,6 +1,6 @@
 import getRefs from './refs';
 import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
-import { loadWatched, loadQueue } from './library';
+import { loadWatched, loadQueue, updateWatchedOnClick, updateQueueOnClick } from './library';
 import { getButton } from './adding-to-library';
 import { onCardClick } from './modal';
 const refs = getRefs();
@@ -26,12 +26,16 @@ function navToHome(e) {
   refs.searchForm.classList.remove('is-hidden');
   refs.btnsLibrary.classList.add('is-hidden');
   refs.overlay.classList.remove('library-open');
+  refs.galleryTrending.removeEventListener('click', updateWatchedOnClick);
+  refs.galleryTrending.removeEventListener('click', updateQueueOnClick);
   // сюда подключить отрисовку популярных фильмов
   onHomeClick();
+  // refs.paginationMenu.addEventListener('click', trendingPagination);
 }
 
 function navToLibrary(e) {
   refs.paginationMenu.removeEventListener('click', trendingPagination);
+  refs.error.innerHTML = '';
   e.preventDefault();
   refs.library.classList.add('nav-link-current');
   refs.home.classList.remove('nav-link-current');
@@ -39,7 +43,23 @@ function navToLibrary(e) {
   refs.btnsLibrary.classList.remove('is-hidden');
   refs.overlay.classList.add('library-open');
   showWatched();
+  refs.galleryTrending.removeEventListener('click', updateWatchedOnClick);
+  refs.galleryTrending.addEventListener('click', updateWatchedOnClick);
 }
+
+// function updateWatchedOnClick(e) {
+//   const btn = e.target;
+//   if (btn.dataset.action === 'toggle-watched' || btn.dataset.action === 'toggle-queue') {
+//     loadWatched();
+//   }
+// }
+
+// function updateQueueOnClick(e) {
+//   const btn = e.target;
+//   if (btn.dataset.action === 'toggle-watched' || btn.dataset.action === 'toggle-queue') {
+//     loadQueue();
+//   }
+// }
 
 // переключение кнопок Просмотр/Очередь
 
@@ -49,6 +69,9 @@ refs.btnQueue.addEventListener('click', showQueue);
 function showWatched() {
   refs.btnWatched.classList.add('btn-active');
   refs.btnQueue.classList.remove('btn-active');
+
+  refs.galleryTrending.removeEventListener('click', updateWatchedOnClick);
+  refs.galleryTrending.addEventListener('click', updateWatchedOnClick);
   // сюда подключить список просмотренных
   loadWatched();
 }
@@ -56,6 +79,9 @@ function showWatched() {
 function showQueue() {
   refs.btnQueue.classList.add('btn-active');
   refs.btnWatched.classList.remove('btn-active');
+
+  refs.galleryTrending.removeEventListener('click', updateQueueOnClick);
+  refs.galleryTrending.addEventListener('click', updateQueueOnClick);
   // сюда подключить очередь просмотра
   loadQueue();
 }
