@@ -2,6 +2,7 @@ import makeModal from '../../palets/modal.hbs';
 import getRefs from './refs';
 import { getButton } from './adding-to-library';
 import { updateQueueOnClick, updateWatchedOnClick, updateMainGal } from './library';
+import { closeVideoModal } from './trailers-modal';
 
 const refs = getRefs();
 
@@ -53,6 +54,7 @@ function closeModal(e) {
   refs.backdrop.removeEventListener('click', closeModal);
   refs.modalFilm.removeEventListener('click', getButton);
   document.removeEventListener('keydown', closeModal);
+  closeVideoModal()
 }
 
 export { onCardClick, closeModal };

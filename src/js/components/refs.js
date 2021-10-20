@@ -28,6 +28,12 @@ export default function getRefs() {
     modalClose: document.querySelector('.modal-close'),
     modalFilm: document.querySelector('.modal'),
     backdrop: document.querySelector('.backdrop'),
+    btnVideo: document.querySelector('[data-action="video-btn"]'),
+    modalImage: document.querySelector('.modal-image-block'),
+    vidBtn: document.querySelector('.modal-button'),
+    modalVideo: document.querySelector('.video-modal'),
+    videoCont: document.querySelector('.trailer-container'),
+    videoClose: document.querySelector('.close-video-btn')
   };
 }
 
