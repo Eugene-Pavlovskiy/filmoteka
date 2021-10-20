@@ -49,7 +49,7 @@ async function fetchVideos(index) {
 
   function openVideoModal(index, btn) {
    
-    console.log(index.id)
+    // console.log(index.id)
     fetchVideos(index.id)
   .then(response => {
     if(response.length > 0){
@@ -59,7 +59,7 @@ async function fetchVideos(index) {
     else {
       refs.videoCont.insertAdjacentHTML('beforeend', notFoundTpl(index));
     }
-    console.log(response)
+    // console.log(response)
     return response
   })
   
