@@ -2,27 +2,35 @@ import getRefs from './refs';
 import { getWatchedMovies, getQueueMovies, getCurrentColection } from './api';
 import { updateGallery } from './updateGallery';
 import { appendMarkUp, makeMarkUp } from './mark-up';
-import { forListenerRemoval } from './search';
+// import { forListenerRemoval } from './search';
 
 const refs = getRefs();
+
+let forListenerRemoval = null;
+
+const libPagWatched = libraryPagination(getWatchedMovies);
+const libPagQueue = libraryPagination(getQueueMovies);
 
 function loadWatched() {
   sessionStorage.setItem('pageCounter', 1);
 
   appendMarkUp(getWatchedMovies, false);
 
-  refs.paginationMenu.removeEventListener('click', forListenerRemoval);
-  refs.paginationMenu.removeEventListener('click', libraryPagination(getQueueMovies));
-  refs.paginationMenu.addEventListener('click', libraryPagination(getWatchedMovies));
+  // refs.paginationMenu.removeEventListener('click', forListenerRemoval);
+  refs.paginationMenu.removeEventListener('click', libPagQueue);
+  refs.paginationMenu.addEventListener('click', libPagWatched);
 }
+
+// refs.paginationMenu.removeEventListener('click', libPagQueue);
+// refs.paginationMenu.removeEventListener('click', libPagWatched);
 
 function loadQueue() {
   sessionStorage.setItem('pageCounter', 1);
 
   appendMarkUp(getQueueMovies, false);
 
-  refs.paginationMenu.removeEventListener('click', libraryPagination(getWatchedMovies));
-  refs.paginationMenu.addEventListener('click', libraryPagination(getQueueMovies));
+  refs.paginationMenu.removeEventListener('click', libPagWatched);
+  refs.paginationMenu.addEventListener('click', libPagWatched);
 }
 
 function libraryPagination(callBack) {
@@ -57,4 +65,12 @@ function updateMainGal(e) {
   refs.galleryTrending.classList.remove('animation');
 }
 
-export { loadWatched, loadQueue, updateWatchedOnClick, updateQueueOnClick, updateMainGal };
+export {
+  loadWatched,
+  loadQueue,
+  updateWatchedOnClick,
+  updateQueueOnClick,
+  updateMainGal,
+  libPagWatched,
+  libPagQueue,
+};

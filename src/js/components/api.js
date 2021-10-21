@@ -127,11 +127,11 @@ function getCurrentColection(pageNum) {
     return 0;
   }
 
-  sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
+  // sessionStorage.setItem('totalPages', Math.ceil(movies.length / 20));
 
-  const res = movies.splice((pageNum - 1) * 20, 20);
+  // const res = movies.splice((pageNum - 1) * 20, 20);
 
-  return res;
+  return movies;
 }
 
 export {

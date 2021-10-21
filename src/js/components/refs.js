@@ -4,7 +4,7 @@ export default function getRefs() {
     error: document.querySelector('.error'),
     errorText: document.querySelector('.error-text'),
     searchInput: document.querySelector('.search-input'),
-    galleryTrending: document.querySelector('.gallery-trending__list'),
+    galleryTrending: document.querySelector('.gallery-container'),
     innerContainer: document.querySelector('.inner-container'),
     notFoundContainer: document.querySelector('.not-found-container'),
     paginationContainer: document.querySelector('.pagination-container'),
@@ -28,6 +28,12 @@ export default function getRefs() {
     modalClose: document.querySelector('.modal-close'),
     modalFilm: document.querySelector('.modal'),
     backdrop: document.querySelector('.backdrop'),
+    btnVideo: document.querySelector('[data-action="video-btn"]'),
+    modalImage: document.querySelector('.modal-image-block'),
+    vidBtn: document.querySelector('.modal-button'),
+    modalVideo: document.querySelector('.video-modal'),
+    videoCont: document.querySelector('.trailer-container'),
+    videoClose: document.querySelector('.close-video-btn')
   };
 }
 

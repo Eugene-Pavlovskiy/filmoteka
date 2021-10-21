@@ -30,10 +30,12 @@ function navToHome(e) {
   refs.galleryTrending.removeEventListener('click', updateQueueOnClick);
   // сюда подключить отрисовку популярных фильмов
   onHomeClick();
+  // refs.paginationMenu.addEventListener('click', trendingPagination);
 }
 
 function navToLibrary(e) {
   refs.paginationMenu.removeEventListener('click', trendingPagination);
+  refs.error.innerHTML = '';
   e.preventDefault();
   refs.library.classList.add('nav-link-current');
   refs.home.classList.remove('nav-link-current');
