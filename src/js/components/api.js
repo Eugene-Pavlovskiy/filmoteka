@@ -41,15 +41,15 @@ async function checkKidsMode() {
   }
 }
 
-async function checkKidsLib(films) {
-  const kidsMode = localStorage.getItem('theme');
-  if (kidsMode === 'kids-theme') {
-    films = films.filter(film => film.genres.includes('Animation'));
-  } else {
-    films;
-  }
-  return films;
-}
+// async function checkKidsLib(films) {
+//   const kidsMode = localStorage.getItem('theme');
+//   if (kidsMode === 'kids-theme') {
+//     films = films.filter(film => film.genres.includes('Animation'));
+//   } else {
+//     films;
+//   }
+//   return films;
+// }
 
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
 async function fetchTrendingMovies(pageNum) {
@@ -72,14 +72,6 @@ async function fetchMovies(query) {
   return async function (page) {
     const respons = await fetch(`${URL}search/movie?api_key=${KEY}&query=${query}&page=${page}`);
     const movies = await respons.json();
-
-    console.log(movies);
-
-    // let movies = await respons.json();
-    // const kidsMode = localStorage.getItem('theme');
-    // if (kidsMode === 'kids-theme') {
-    //   return (movies = await respons.json().filter(film => film.results.genre_ids.includes(16)));
-    // }
 
     sessionStorage.setItem('totalPages', movies.total_pages);
     return movies.results;
