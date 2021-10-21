@@ -39,8 +39,8 @@ function switchTheme(e) {
 }
 
 function replaceTheme(oldTheme, newTheme) {
-  document.body.classList.add(newTheme);
-  document.body.classList.remove(oldTheme);
+  refs.overlay.classList.add(newTheme);
+  refs.overlay.classList.remove(oldTheme);
   localStorage.setItem(THEME_KEY, newTheme);
 }
 
