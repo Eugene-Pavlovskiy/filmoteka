@@ -73,13 +73,12 @@ async function fetchMovies(query) {
     const respons = await fetch(`${URL}search/movie?api_key=${KEY}&query=${query}&page=${page}`);
     const movies = await respons.json();
 
-    console.log(movies.results);
+    console.log(movies);
+
     // let movies = await respons.json();
     // const kidsMode = localStorage.getItem('theme');
     // if (kidsMode === 'kids-theme') {
-    //   return (movies = await respons
-    //     .json()
-    //     .filter(film => film.genres.includes('Family' || 'Animation')));
+    //   return (movies = await respons.json().filter(film => film.results.genre_ids.includes(16)));
     // }
 
     sessionStorage.setItem('totalPages', movies.total_pages);
