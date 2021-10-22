@@ -9,6 +9,7 @@
   margin-right: auto;
   background-size: cover;
   background-image: $gradient, url('../images/header/mob-home.png');
+  background-position: bottom;
 
   @media screen and (min-resolution: 2dppx) {
     background-image: $gradient, url('../images/header/mob-home@2x.png');
@@ -83,6 +84,10 @@
         background-image: $gradient, url('../images/header/dsktp-lib@3x.jpg');
       }
     }
+  }
+
+  &.kids-theme {
+    background-image: $gradient, url('../images/header/mult.png');
   }
 }
 

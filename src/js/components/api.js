@@ -1,6 +1,7 @@
 // функции для работы с API
 
 const KEY = '94f703750c3e0771d8c2babc592efc94';
+const URL = `https://api.themoviedb.org/3/`;
 
 // добавляет в локальное хранилище массив всех возможных жанров который будет использоваться для формирования списка жанров фильма
 async function getAllGenres() {
@@ -16,11 +17,48 @@ async function getAllGenres() {
   localStorage.setItem('genres', JSON.stringify(genres.genres));
 }
 
+// получаем ID детских жанров
+const allGenres = localStorage.getItem('genres');
+const kidsGenres = JSON.parse(allGenres).filter(
+  genre => genre.name === 'Family' || genre.name === 'Animation',
+);
+const kidsGenresIDs = kidsGenres.map(g => g.id);
+console.log(kidsGenresIDs);
+
+// Функции для детского режима
+
+let searchOpts = `trending/movie/week`;
+let searchOpts2 = ``;
+
+async function checkKidsMode() {
+  const kidsMode = localStorage.getItem('theme');
+  if (kidsMode === 'kids-theme') {
+    searchOpts = `discover/movie`;
+    searchOpts2 = `&with_genres=${kidsGenresIDs[0]}&with_genres=${kidsGenresIDs[1]}&sort_by=popularity.desc`;
+  } else {
+    searchOpts = `trending/movie/week`;
+    searchOpts2 = ``;
+  }
+}
+
+// async function checkKidsLib(films) {
+//   const kidsMode = localStorage.getItem('theme');
+//   if (kidsMode === 'kids-theme') {
+//     films = films.filter(film => film.genres.includes('Animation'));
+//   } else {
+//     films;
+//   }
+//   return films;
+// }
+
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
 async function fetchTrendingMovies(pageNum) {
+  checkKidsMode();
   const firstRespons = await fetch(
-    `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=${pageNum}`,
+    `${URL}${searchOpts}?api_key=${KEY}${searchOpts2}&page=${pageNum}`,
   );
+  // `https://api.themoviedb.org/3/trending/movie/week?api_key=${KEY}&page=${pageNum}`,
+  // `discover/movie?api_key=${KEY}&with_genres=${kidsGenresIDs[0]}&with_genres=${kidsGenresIDs[1]}&sort_by=popularity.desc&page=${pageNum}`;
 
   const parsedRespons = await firstRespons.json();
 
@@ -32,10 +70,7 @@ async function fetchTrendingMovies(pageNum) {
 
 async function fetchMovies(query) {
   return async function (page) {
-    const respons = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${query}&page=${page}`,
-    );
-
+    const respons = await fetch(`${URL}search/movie?api_key=${KEY}&query=${query}&page=${page}`);
     const movies = await respons.json();
 
     sessionStorage.setItem('totalPages', movies.total_pages);
@@ -44,7 +79,14 @@ async function fetchMovies(query) {
 }
 
 function getWatchedMovies(pageNum) {
-  const movies = JSON.parse(localStorage.getItem('moviesInWatched'));
+  let movies = JSON.parse(localStorage.getItem('moviesInWatched'));
+  const kidsMode = localStorage.getItem('theme');
+
+  if (kidsMode === 'kids-theme') {
+    return (movies = JSON.parse(localStorage.getItem('moviesInWatched')).filter(film =>
+      film.genres.includes('Family' || 'Animation'),
+    ));
+  }
 
   if (!movies) {
     return 0;
@@ -58,7 +100,14 @@ function getWatchedMovies(pageNum) {
 }
 
 function getQueueMovies(pageNum) {
-  const movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+  let movies = JSON.parse(localStorage.getItem('moviesInQueue'));
+  const kidsMode = localStorage.getItem('theme');
+
+  if (kidsMode === 'kids-theme') {
+    return (movies = JSON.parse(localStorage.getItem('moviesInQueue')).filter(film =>
+      film.genres.includes('Family' || 'Animation'),
+    ));
+  }
 
   if (!movies) {
     return 0;
@@ -92,4 +141,5 @@ export {
   getWatchedMovies,
   getQueueMovies,
   getCurrentColection,
+  checkKidsMode,
 };

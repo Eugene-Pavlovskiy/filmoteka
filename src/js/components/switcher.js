@@ -1,57 +1,53 @@
 const body = document.querySelector('body');
-const switcher = document.querySelector('.theme-switch__toggle');
+const switcher = document.querySelector('.colorTheme-switch__toggle');
 const footer = document.querySelector('.footer');
 const modal = document.querySelector('.modal');
 
-
-const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
+const ColorTheme = {
+  LIGHT: 'light-ColorTheme',
+  DARK: 'dark-ColorTheme',
 };
 
-body.classList.add(Theme.LIGHT);
+body.classList.add(ColorTheme.LIGHT);
 switcher.addEventListener('change', setClassList);
 switcher.addEventListener('change', saveData);
-footer.classList.add(Theme.LIGHT);
-modal.classList.add(Theme.LIGHT);
-
+footer.classList.add(ColorTheme.LIGHT);
+modal.classList.add(ColorTheme.LIGHT);
 
 function setClassList(evt) {
   evt.preventDefault(evt);
-  
-  
+
   if (switcher.checked) {
-    body.classList.add(Theme.DARK);
-      body.classList.remove(Theme.LIGHT);
-      footer.classList.add(Theme.DARK);
-      footer.classList.remove(Theme.LIGHT);
-      modal.classList.add(Theme.DARK);
-      modal.classList.remove(Theme.LIGHT);
+    body.classList.add(ColorTheme.DARK);
+    body.classList.remove(ColorTheme.LIGHT);
+    footer.classList.add(ColorTheme.DARK);
+    footer.classList.remove(ColorTheme.LIGHT);
+    modal.classList.add(ColorTheme.DARK);
+    modal.classList.remove(ColorTheme.LIGHT);
   } else {
-    body.classList.add(Theme.LIGHT);
-      body.classList.remove(Theme.DARK);
-      footer.classList.add(Theme.LIGHT);
-      footer.classList.remove(Theme.DARK);
-      modal.classList.add(Theme.LIGHT);
-      modal.classList.remove(Theme.DARK);
+    body.classList.add(ColorTheme.LIGHT);
+    body.classList.remove(ColorTheme.DARK);
+    footer.classList.add(ColorTheme.LIGHT);
+    footer.classList.remove(ColorTheme.DARK);
+    modal.classList.add(ColorTheme.LIGHT);
+    modal.classList.remove(ColorTheme.DARK);
   }
 }
 
 function saveData(evt) {
-  
   if (switcher.checked) {
-    localStorage.setItem('theme', Theme.DARK);
+    localStorage.setItem('ColorTheme', ColorTheme.DARK);
   } else {
-    localStorage.removeItem('theme');
-    localStorage.setItem('theme', Theme.LIGHT);
+    localStorage.removeItem('ColorTheme');
+    localStorage.setItem('ColorTheme', ColorTheme.LIGHT);
   }
 }
 
-const currentTheme = localStorage.getItem('theme');
+const currentColorTheme = localStorage.getItem('ColorTheme');
 
-if (currentTheme === Theme.DARK) {
-    body.classList.add(Theme.DARK);
-    footer.classList.add(Theme.DARK);
-    modal.classList.add(Theme.DARK);
-    switcher.checked = true;
+if (currentColorTheme === ColorTheme.DARK) {
+  body.classList.add(ColorTheme.DARK);
+  footer.classList.add(ColorTheme.DARK);
+  modal.classList.add(ColorTheme.DARK);
+  switcher.checked = true;
 }

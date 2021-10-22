@@ -2,6 +2,7 @@ import './sass/main.scss';
 import getRefs from './js/components/refs';
 import { getAllGenres, fetchTrendingMovies } from './js/components/api';
 import { appendMarkUp } from './js/components/mark-up';
+import './js/components/filter';
 import './js/components/nav';
 import './js/components/footer-modal';
 import './js/components/footer-slider-btn';
