@@ -1,13 +1,11 @@
-import { clearGallery } from './mark-up';
-import { trendingPagination, onFormInput, onHomeClick, onFormInputDebounce } from './search';
-import { loadWatched, loadQueue, updateWatchedOnClick, updateQueueOnClick } from './library';
+import { onHomeClick } from './search';
 import { checkKidsMode } from './api';
 import getRefs from './refs';
 import { showWatched, showQueue } from './nav';
 
 const refs = getRefs();
 
-console.log(JSON.parse(localStorage.getItem('currentColection')));
+// console.log(JSON.parse(localStorage.getItem('currentColection')));
 
 const Theme = {
   KIDS: 'kids-theme',
@@ -19,7 +17,7 @@ const THEME_KEY = 'theme';
 const themeSwitcher = document.querySelector('.theme-switch__toggle');
 themeSwitcher.addEventListener('change', switchTheme);
 
-makeSavedTheme();
+// makeSavedTheme();
 
 function switchTheme(e) {
   if (e.target.checked) {
@@ -53,3 +51,5 @@ function makeSavedTheme() {
     replaceTheme(Theme.KIDS, Theme.ADULT);
   }
 }
+
+export { makeSavedTheme };

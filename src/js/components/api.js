@@ -5,25 +5,29 @@ const URL = `https://api.themoviedb.org/3/`;
 
 // добавляет в локальное хранилище массив всех возможных жанров который будет использоваться для формирования списка жанров фильма
 async function getAllGenres() {
-  if (localStorage.getItem('genres')) {
-    return;
-  }
+  // if (localStorage.getItem('genres')) {
+  //   return;
+  // }
   const respons = await fetch(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${KEY}&language=en-US`,
   );
 
-  const genres = await respons.json();
+  const { genres } = await respons.json();
 
-  localStorage.setItem('genres', JSON.stringify(genres.genres));
+  const kidsGenres = genres.filter(genre => genre.name === 'Family' || genre.name === 'Animation');
+  const kidsGenresIDs = kidsGenres.map(g => g.id);
+
+  localStorage.setItem('kidsGenresId', JSON.stringify(kidsGenresIDs));
+  localStorage.setItem('genres', JSON.stringify(genres));
 }
 
 // получаем ID детских жанров
-const allGenres = localStorage.getItem('genres');
-const kidsGenres = JSON.parse(allGenres).filter(
-  genre => genre.name === 'Family' || genre.name === 'Animation',
-);
-const kidsGenresIDs = kidsGenres.map(g => g.id);
-console.log(kidsGenresIDs);
+// const allGenres = localStorage.getItem('genres');
+// console.log('allGenres: ', allGenres);
+// const kidsGenres = JSON.parse(allGenres).filter(
+//   genre => genre.name === 'Family' || genre.name === 'Animation',
+// );
+// const kidsGenresIDs = kidsGenres.map(g => g.id);
 
 // Функции для детского режима
 
@@ -32,6 +36,7 @@ let searchOpts2 = ``;
 
 async function checkKidsMode() {
   const kidsMode = localStorage.getItem('theme');
+  const kidsGenresIDs = JSON.parse(localStorage.getItem('kidsGenresId'));
   if (kidsMode === 'kids-theme') {
     searchOpts = `discover/movie`;
     searchOpts2 = `&with_genres=${kidsGenresIDs[0]}&with_genres=${kidsGenresIDs[1]}&sort_by=popularity.desc`;
@@ -41,15 +46,15 @@ async function checkKidsMode() {
   }
 }
 
-// async function checkKidsLib(films) {
-//   const kidsMode = localStorage.getItem('theme');
-//   if (kidsMode === 'kids-theme') {
-//     films = films.filter(film => film.genres.includes('Animation'));
-//   } else {
-//     films;
-//   }
-//   return films;
-// }
+async function checkKidsLib(films) {
+  const kidsMode = localStorage.getItem('theme');
+  if (kidsMode === 'kids-theme') {
+    films = films.filter(film => film.genres.includes('Animation'));
+  } else {
+    films;
+  }
+  return films;
+}
 
 // функция для получения массива популярных фильмов (передает в локальное хранили общее количество страниц)
 async function fetchTrendingMovies(pageNum) {
